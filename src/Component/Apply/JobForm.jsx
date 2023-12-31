@@ -1,6 +1,6 @@
 // src/components/JobForm.js
 import React, { useState } from "react";
-
+ import './jobForm.css'
 const JobForm = () => {
   const [jobTitle, setJobTitle] = useState("");
   const [jobDescription, setJobDescription] = useState("");
@@ -19,12 +19,13 @@ const JobForm = () => {
   };
 
   return (
-    <div>
+    <div className="jobform">
       <h2>Job Application Form</h2>
       <form onSubmit={handleSubmit}>
         <label>
           Job Title:
           <input
+            className="inputjob"
             type="text"
             value={jobTitle}
             onChange={(e) => setJobTitle(e.target.value)}
@@ -34,6 +35,7 @@ const JobForm = () => {
         <label>
           Job Description:
           <textarea
+            className="textare"
             value={jobDescription}
             onChange={(e) => setJobDescription(e.target.value)}
           />
@@ -42,6 +44,7 @@ const JobForm = () => {
         <label>
           Location:
           <input
+            className="inputjob"
             type="text"
             value={location}
             onChange={(e) => setLocation(e.target.value)}
@@ -51,13 +54,16 @@ const JobForm = () => {
         <label>
           Salary:
           <input
+            className="inputjob"
             type="text"
             value={salary}
             onChange={(e) => setSalary(e.target.value)}
           />
         </label>
 
-        <button type="submit">Submit</button>
+        <button className="btn btncenter" type="submit">
+          Submit
+        </button>
       </form>
     </div>
   );

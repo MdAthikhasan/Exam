@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { CiTrophy } from "react-icons/ci";
 import { AiFillTag } from "react-icons/ai";
 import { IoLocationSharp } from "react-icons/io5";
@@ -13,6 +13,13 @@ import { FaEdit } from "react-icons/fa";
 import { Link } from "react-router-dom";
 const Job = ({ jobdata }) => {
   const { title, logo, id, companyName, location } = jobdata;
+  const [filter, setFilter] = useState()
+  
+  const handleFavourite = () => {
+   
+ }
+
+
 
   return (
     <>
@@ -61,7 +68,7 @@ const Job = ({ jobdata }) => {
             <AiFillAndroid className="icon2" />
           </p>
           <p>
-            <MdOutlineFavorite className="icon2" />
+            <MdOutlineFavorite onClick={handleFavourite} className="icon2" />
             <TiDeleteOutline className="icon2" />
             <FaEdit className="icon2" />
           </p>

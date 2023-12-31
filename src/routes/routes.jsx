@@ -29,13 +29,13 @@ export const routes = createBrowserRouter([
             <Jobs />
           </Private>
         ),
-        loader:   () => fetch("http://localhost:9000/jobs"),
+        loader: () => fetch("http://localhost:9000/jobs"),
       },
       {
         path: "jobs/:id",
         element: <JobDetails />,
-        loader:   ({ params }) => {
-         return fetch(`http://localhost:9000/jobs/${params.id}`);
+        loader: ({ params }) => {
+          return fetch(`http://localhost:9000/jobs/${params.id}`);
         },
       },
       {
@@ -49,6 +49,7 @@ export const routes = createBrowserRouter([
       {
         path: "favourite",
         element: <Favourite />,
+        loader: () => fetch("http://localhost:9000/jobs"),
       },
 
       {

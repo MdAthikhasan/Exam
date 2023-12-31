@@ -57,10 +57,11 @@ const Sign = () => {
         <fieldset style={{ padding: "15px" }}>
           <legend style={{ fontSize: "25px" }}>
             {" "}
-            &nbsp;&nbsp;Sign Up   &nbsp;&nbsp;
+            &nbsp;&nbsp;Sign Up &nbsp;&nbsp;
           </legend>
           <label>
             <input
+              className="input"
               type="text"
               name="username"
               value={formData.username}
@@ -71,6 +72,7 @@ const Sign = () => {
           <br />
           <label>
             <input
+              className="input"
               type="email"
               name="email"
               value={formData.email}
@@ -81,6 +83,7 @@ const Sign = () => {
           <br />
           <label>
             <input
+              className="input"
               type="password"
               name="password"
               value={formData.password}
@@ -91,6 +94,7 @@ const Sign = () => {
           <br />
           <label>
             <input
+              className="input"
               type="password"
               name="confirmpassword"
               value={formData.confirmpassword}

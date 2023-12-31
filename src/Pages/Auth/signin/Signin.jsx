@@ -49,6 +49,7 @@ const Signin = () => {
 
           <label>
             <input
+              className="input"
               type="email"
               name="email"
               placeholder="Enter email or phone number"
@@ -59,6 +60,7 @@ const Signin = () => {
           <br />
           <label>
             <input
+              className="input"
               type="password"
               name="password"
               placeholder="Password"

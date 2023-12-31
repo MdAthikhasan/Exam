@@ -14,23 +14,17 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: relative;
+ 
 }
+ 
 .title::first-line{
  font-size: 80px;
  font-weight: 700;
  color: blue;
 }
  
-/* p::first-line{
-    color: blue;
-    font-weight: 600;
-    font-size: 60px;
-} */
- /* span{
-    color: chartreuse;
-    font-weight: 400;
-        font-size: 50px;
- } */
+ 
  .btn{
    padding: 10px 40px;
    outline: none;
@@ -46,3 +40,4 @@
     background-color: rgb(18, 233, 161);
     transition: .5s linear;
  }
+ 
