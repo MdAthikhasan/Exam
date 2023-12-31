@@ -1,0 +1,20 @@
+ 
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+.jobcardDetails{
+    width: 70vw;
+    margin: auto;
+    background-color: rgb(231, 238, 236);
+    border: 1px solid black;
+    border-radius: 6px;
+    padding: 10px;
+    
+}
+.jobrequirment{
+    /* border-bottom: 1px solid black;
+    margin-top: 10px;
+} */

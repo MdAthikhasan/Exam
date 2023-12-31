@@ -1,0 +1,43 @@
+ * {
+     margin: 0;
+     padding: 0;
+ }
+
+ footer {
+     background-color: #333;
+     color: white;
+     text-align: center;
+     padding: 20px;
+     /* position: fixed; */
+     bottom: 0;
+     width: 100%;
+ }
+
+ .footer-section {
+     margin-bottom: 15px;
+ }
+
+ .footer-links {
+     list-style: none;
+     padding: 0;
+     display: flex;
+     justify-content: center;
+ }
+
+ .footer-links li {
+     margin: 0 15px;
+ }
+
+ .footer-social {
+     list-style: none;
+     padding: 0;
+     display: flex;
+     justify-content: center;
+     margin-top: 15px;
+ }
+
+ .footer-social li {
+     margin: 0 10px;
+ }
+
+ 

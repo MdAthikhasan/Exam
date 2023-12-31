@@ -1,0 +1,48 @@
+*{
+    margin: 0;
+    padding: 0;
+
+}
+.home-image{
+    width: 50vw;
+    height: 80vh;
+   display: block;
+   border-radius: 6px;
+
+}
+.home{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.title::first-line{
+ font-size: 80px;
+ font-weight: 700;
+ color: blue;
+}
+ 
+/* p::first-line{
+    color: blue;
+    font-weight: 600;
+    font-size: 60px;
+} */
+ /* span{
+    color: chartreuse;
+    font-weight: 400;
+        font-size: 50px;
+ } */
+ .btn{
+   padding: 10px 40px;
+   outline: none;
+   border: none;
+   border-radius:6px;
+   background-color: aquamarine;
+   color: black;
+   margin: 10px ;
+   cursor: pointer;
+   display: block;
+ }
+ .btn:hover{
+    background-color: rgb(18, 233, 161);
+    transition: .5s linear;
+ }

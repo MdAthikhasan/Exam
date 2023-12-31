@@ -1,0 +1,62 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.jobs{
+     display: grid;
+     grid-template-columns: repeat(3,1fr);
+     gap:12px;
+}
+ .icons p{
+    color: black;
+    font-size: 15px;
+    display: flex;
+}
+.jobcard{
+    background-color: rgb(246, 243, 239);
+    box-shadow: 2px 2px 2px 2px rgb(185, 184, 184);
+    padding: 12px;
+    /* display: flex;
+    align-items: center; */
+    cursor: pointer;
+    border-radius: 6px;
+    
+}
+/* .jobcard:hover{
+    transform: scale(0.5);
+} */
+.companylogo{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+.icons{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.icon1,.icon2{
+    font-size: 20px;
+    margin-left: 5px;
+    
+}
+.icon2:hover{
+padding: 3px;
+ font-size: 20px;
+ border-radius: 50%;
+ background-color: rgb(126, 109, 109);
+ transition: .5s linear;
+}
+.borderbtm{
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgb(217, 210, 210) ;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.social-icons{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+}
