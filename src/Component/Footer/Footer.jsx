@@ -4,15 +4,15 @@ const Footer = () => {
   return (
     <div >
       <footer>
-        <div class="footer-section">
+        <div className="footer-section">
           <h2>Contact Us</h2>
           <p>Email:mdathikhasna136@gmail.com</p>
           <p>Phone:01824990037</p>
         </div>
 
-        <div class="footer-section">
+        <div className="footer-section">
           <h2>Quick Links</h2>
-          <ul class="footer-links">
+          <ul className="footer-links">
             <li>
               <a href="#">Home</a>
             </li>
@@ -28,9 +28,9 @@ const Footer = () => {
           </ul>
         </div>
 
-        <div class="footer-section">
+        <div className="footer-section">
           <h2>Follow Us</h2>
-          <ul class="footer-social">
+          <ul className="footer-social">
             <li>
               <a href="#" target="_blank">
                 Facebook

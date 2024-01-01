@@ -5,10 +5,12 @@ import { IoMdContact } from "react-icons/io";
 import { useAuthState } from "react-firebase-hooks/auth";
 import "./header.css";
 import firebaseAuth from "./../../Firebase/firebase";
-import { useSignOut } from 'react-firebase-hooks/auth';
+import { useSignOut } from "react-firebase-hooks/auth";
+import Swal from "sweetalert2";
 const Header = () => {
   const [user, loading, error] = useAuthState(firebaseAuth);
   const [signOut] = useSignOut(firebaseAuth);
+
   return (
     <nav>
       <div className="nabvar flex">
@@ -71,6 +73,11 @@ const Header = () => {
                 </li>
               </abbr>
             ) : (
+              Swal.fire({
+                title: "Without sign-in Cannot Apply",
+                text: "",
+                icon: "warning",
+              }),
               <abbr title="Login">
                 <li className="ulsignin">
                   <Link to={"/sign"}>Sign In</Link>

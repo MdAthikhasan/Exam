@@ -5,12 +5,15 @@ import About from "../Pages/About/About";
 import Contact from "../Pages/Contact/Contact";
 // import Login from "../Pages/Auth/Log in/Login";
 import Sign from "../Pages/Auth/Sigin/Sign";
-import Erro from "../Pages/Error/Erro";
+// import Erro from "../Pages/Error/Erro";
 import Jobs from "./../Pages/Jobs/Jobs";
 import Favourite from "../Pages/Favourite/Favourite";
 import Signin from "../Pages/Auth/signin/Signin";
 import Private from "./Private";
 import JobDetails from "../Pages/Jobs/jobDetails";
+// import axios from "axios";
+// import { Favourite } from "../Pages/Favourite/Favourite";
+import Erro from "./../Pages/Error/Erro";
 import axios from "axios";
 
 export const routes = createBrowserRouter([
@@ -29,13 +32,20 @@ export const routes = createBrowserRouter([
             <Jobs />
           </Private>
         ),
-        loader: () => fetch("http://localhost:9000/jobs"),
+        loader: async () => {
+          let response = await axios.get("http://localhost:9000/jobs");
+          console.log(response);
+          return response.data;
+        },
       },
       {
         path: "jobs/:id",
         element: <JobDetails />,
-        loader: ({ params }) => {
-          return fetch(`http://localhost:9000/jobs/${params.id}`);
+        loader: async ({ params }) => {
+          let response = await axios.get(
+            `http://localhost:9000/jobs/${params.id}`
+          );
+          return response.data;
         },
       },
       {
@@ -49,7 +59,10 @@ export const routes = createBrowserRouter([
       {
         path: "favourite",
         element: <Favourite />,
-        loader: () => fetch("http://localhost:9000/jobs"),
+        loader: async () => {
+          let response = await axios.get("http://localhost:9000/jobs");
+          return response.data;
+        },
       },
 
       {

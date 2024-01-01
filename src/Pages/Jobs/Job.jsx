@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { CiTrophy } from "react-icons/ci";
 import { AiFillTag } from "react-icons/ai";
 import { IoLocationSharp } from "react-icons/io5";
@@ -11,13 +11,15 @@ import { MdOutlineFavorite } from "react-icons/md";
 import { TiDeleteOutline } from "react-icons/ti";
 import { FaEdit } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { MyContext } from "../../Context/Context";
 const Job = ({ jobdata }) => {
   const { title, logo, id, companyName, location } = jobdata;
-  const [filter, setFilter] = useState()
-  
-  const handleFavourite = () => {
-   
- }
+  // const [filter, setFilter] = useState()
+   const { handleFavourite } = useContext(MyContext);
+//   const handleFavourite = () => {
+//     setData([...data,id]);
+    
+//  }
 
 
 
@@ -68,7 +70,10 @@ const Job = ({ jobdata }) => {
             <AiFillAndroid className="icon2" />
           </p>
           <p>
-            <MdOutlineFavorite onClick={handleFavourite} className="icon2" />
+            <MdOutlineFavorite
+              onClick={() => handleFavourite(id)}
+              className="icon2"
+            />
             <TiDeleteOutline className="icon2" />
             <FaEdit className="icon2" />
           </p>

@@ -10,14 +10,14 @@ const Home = () => {
   const [user] = useAuthState(firebaseAuth);
   return (
     <div>
-      <div className={!isTrue ? "home" :"home overlay"}>
+      <div className={!isTrue ? "home" : "home overlay"}>
         <div className="left-side">
           <h1 className="title">
-            Buil your carear{" "}
+            Build your careear in{" "}
             <span style={{ color: "green" }}>
-              in halal path the career compass finding{" "}
+              halal path the career compass finding north
             </span>{" "}
-            north in Your Job Journey
+            in Your Job Journey
           </h1>
           <div style={{ display: "flex", alignItems: "center" }}>
             <Link to={!user ? "/sign" : "/jobs"}>

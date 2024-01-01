@@ -1,13 +1,18 @@
-import React, { createContext } from 'react'
-import { useLoaderData } from 'react-router-dom';
+import React, { createContext, useState } from "react";
 
-export const MyContext =  createContext()
+export const MyContext = createContext();
 const Context = ({ children }) => {
-    const data = useLoaderData()
+  const [ id, setId] = useState([]);
+  const handleFavourite = (serverId) => {
+    setId([...id, serverId]);
+  };
+  let obj = {
+    handleFavourite,
+    id,
+    setId,
+  };
+  // console.log(data)
+  return <MyContext.Provider value={obj}>{children}</MyContext.Provider>;
+};
 
-    return <MyContext.Provider value={data}>{children}</MyContext.Provider>;
-    
-  
-}
-
-export default Context
+export default Context;

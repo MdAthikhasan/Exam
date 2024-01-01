@@ -1,66 +1,110 @@
 // src/components/JobForm.js
 import React, { useState } from "react";
- import './jobForm.css'
+import "./jobForm.css";
+import axios from "axios";
 const JobForm = () => {
-  const [jobTitle, setJobTitle] = useState("");
-  const [jobDescription, setJobDescription] = useState("");
-  const [location, setLocation] = useState("");
-  const [salary, setSalary] = useState("");
+  const [formData, setFormData] = useState({
+    title: "",
+    logo: "",
+    comname: "",
+    position: "",
+    location: "",
+    description: "",
+  });
+  const handleChange = (e) => {
+    // console.log(e.target.value);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // You can perform actions with the form data here, such as sending it to a server
+    // const { name, value } = e.target.name;
 
-    // For this example, let's just log the data to the console
-    console.log("Job Title:", jobTitle);
-    console.log("Job Description:", jobDescription);
-    console.log("Location:", location);
-    console.log("Salary:", salary);
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      [e.target.name]: e.target.value,
+    }));
   };
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+   await axios
+      .post("http://localhost:9000/jobs" , formData)
+      .then((res) => console.log(res))
+      .catch((error) => console.log(error));
 
+    setFormData({
+      title: "",
+      logo: "",
+      comname: "",
+      position: "",
+      location: "",
+      description: "",
+    });
+  };
+  const { title, logo, comname, position, location, description } = formData;
   return (
     <div className="jobform">
       <h2>Job Application Form</h2>
       <form onSubmit={handleSubmit}>
         <label>
-          Job Title:
           <input
             className="inputjob"
+            name="title"
             type="text"
-            value={jobTitle}
-            onChange={(e) => setJobTitle(e.target.value)}
+            value={title}
+            placeholder=" Job Title"
+            onChange={handleChange}
           />
         </label>
 
         <label>
-          Job Description:
+          <input
+            className="inputjob"
+            name="logo"
+            type="text"
+            value={logo}
+            placeholder="  Company Logo"
+            onChange={handleChange}
+          />
+        </label>
+
+        <label>
+          <input
+            className="inputjob"
+            type="text"
+            name="comname"
+            value={comname}
+            placeholder=" Company name"
+            onChange={handleChange}
+          />
+        </label>
+
+        <label>
+          <input
+            className="inputjob"
+            type="text"
+            name="position"
+            value={position}
+            placeholder="Position"
+            onChange={handleChange}
+          />
+        </label>
+        <label>
+          <input
+            className="inputjob"
+            type="text"
+            name="location"
+            value={location}
+            placeholder=" Location"
+            onChange={handleChange}
+          />
+        </label>
+
+        <label>
           <textarea
             className="textare"
-            value={jobDescription}
-            onChange={(e) => setJobDescription(e.target.value)}
+            name="description"
+            value={description}
+            placeholder="   Description"
+            onChange={handleChange}
           />
         </label>
-
-        <label>
-          Location:
-          <input
-            className="inputjob"
-            type="text"
-            value={location}
-            onChange={(e) => setLocation(e.target.value)}
-          />
-        </label>
-
-        <label>
-          Salary:
-          <input
-            className="inputjob"
-            type="text"
-            value={salary}
-            onChange={(e) => setSalary(e.target.value)}
-          />
-        </label>
-
         <button className="btn btncenter" type="submit">
           Submit
         </button>
