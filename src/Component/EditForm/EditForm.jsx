@@ -1,35 +1,37 @@
 // src/components/JobForm.js
-import React, { useState } from "react";
-// import "./jobForm.css";
-import './jobForm.css'
+import React, { useContext, useState } from "react";
+
+import "../Apply/jobForm.css";
+import { MyContext } from "../../Context/Context";
 import axios from "axios";
-const JobForm = () => {
-  const [formData, setFormData] = useState({
-    title: "",
-    logo: "",
-    comname: "",
-    position: "",
-    location: "",
-    description: "",
-  });
+// import axios from "axios";
+const EditForm = () => {
+  const { Edit, setIsEdit } = useContext(MyContext);
+  // console.log(Edit);
+  const [newInput, setNewInput] = useState(Edit);
+
+  const { title, logo, companyName, position, location, description, id } =
+    newInput;
+ 
   const handleChange = (e) => {
+    const { name, value } = e.target;
     // console.log(e.target.value);
-
     // const { name, value } = e.target.name;
-
-    setFormData((prevFormData) => ({
+    setNewInput((prevFormData) => ({
       ...prevFormData,
-      [e.target.name]: e.target.value,
+      [name]: value,
     }));
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
-   await axios
-      .post("http://localhost:9000/jobs" , formData)
-      .then((res) => console.log(res))
-      .catch((error) => console.log(error));
 
-    setFormData({
+    try {
+      await axios.put(`http://localhost:9000/jobs/${id}`, newInput);
+    } catch (error) {
+      console.log(error);
+    }
+
+    setNewInput({
       title: "",
       logo: "",
       comname: "",
@@ -38,17 +40,19 @@ const JobForm = () => {
       description: "",
     });
   };
-  const { title, logo, comname, position, location, description } = formData;
+ 
   return (
-    <div className="jobform">
-      <h2>Job Application Form</h2>
+    <div style={{ background: "green" }} className="jobform">
+      <h2>
+        Edit Application Form <span onClick={() => setIsEdit(false)}>❌</span>
+      </h2>
       <form onSubmit={handleSubmit}>
         <label>
           <input
             className="inputjob"
             name="title"
             type="text"
-            value={title}
+            value={title || ""}
             placeholder=" Job Title"
             onChange={handleChange}
           />
@@ -59,7 +63,7 @@ const JobForm = () => {
             className="inputjob"
             name="logo"
             type="text"
-            value={logo}
+            value={logo || ""}
             placeholder="  Company Logo"
             onChange={handleChange}
           />
@@ -69,8 +73,8 @@ const JobForm = () => {
           <input
             className="inputjob"
             type="text"
-            name="comname"
-            value={comname}
+            name="companyName"
+            value={companyName || ""}
             placeholder=" Company name"
             onChange={handleChange}
           />
@@ -81,7 +85,7 @@ const JobForm = () => {
             className="inputjob"
             type="text"
             name="position"
-            value={position}
+            value={position || ""}
             placeholder="Position"
             onChange={handleChange}
           />
@@ -91,7 +95,7 @@ const JobForm = () => {
             className="inputjob"
             type="text"
             name="location"
-            value={location}
+            value={location || ""}
             placeholder=" Location"
             onChange={handleChange}
           />
@@ -101,7 +105,7 @@ const JobForm = () => {
           <textarea
             className="textare"
             name="description"
-            value={description}
+            value={description || ""}
             placeholder="   Description"
             onChange={handleChange}
           />
@@ -114,4 +118,16 @@ const JobForm = () => {
   );
 };
 
-export default JobForm;
+export default EditForm;
+
+//**
+//    {
+//       "id": 1,
+//       "title": "Google Internship Program",
+//       "logo": "https://shorturl.at/iwyR7",
+//       "companyName": "Google",
+//       "position": "Intern Developer",
+//       "location": "Dhaka",
+//       "description": "Established in 2000, Bdjobs.com Limited has been operating the largest online employment exchange of Bangladesh for the last 22 years. www.bdjobs.com is one of the most visited web sites in the country. It is also among the top five (5) most visited job portals in South Asia. Currently the company offers the following position for immediate recruitment."
+//     },
+// * /

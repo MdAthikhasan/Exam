@@ -12,17 +12,31 @@ import { TiDeleteOutline } from "react-icons/ti";
 import { FaEdit } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { MyContext } from "../../Context/Context";
+import axios from "axios";
+import EditForm from "../../Component/EditForm/EditForm";
 const Job = ({ jobdata }) => {
   const { title, logo, id, companyName, location } = jobdata;
-  // const [filter, setFilter] = useState()
-   const { handleFavourite } = useContext(MyContext);
-//   const handleFavourite = () => {
-//     setData([...data,id]);
-    
-//  }
+  const [count, setCount] = useState(0);
+ 
+  const { handleFavourite, Edit, setEdit ,isEdit,setIsEdit } = useContext(MyContext);
+  //   const handleFavourite = () => {
+  //     setData([...data,id]);
 
-
-
+  //  }
+  const handleDelete = async (id) => {
+    try {
+      await axios.delete(`http://localhost:9000/jobs/${id}`);
+      setCount((prevCount) => prevCount + 1);
+    } catch (error) {
+      console.error("Error deleting job:", error.message);
+    }
+    setCount(count + 1);
+  };
+  const handleEdit = (id) => {
+    if (jobdata.id == id) {
+      setEdit(jobdata);
+    }
+  };
   return (
     <>
       <div className="jobcard">
@@ -41,7 +55,7 @@ const Job = ({ jobdata }) => {
                 src={logo}
                 alt=""
               />
-            </p>{" "}
+            </p>
             <br />
             <h2>{title}</h2> <br />
             <h3 style={{ color: "blue" }}>{companyName}</h3>
@@ -74,10 +88,20 @@ const Job = ({ jobdata }) => {
               onClick={() => handleFavourite(id)}
               className="icon2"
             />
-            <TiDeleteOutline className="icon2" />
-            <FaEdit className="icon2" />
+            <TiDeleteOutline
+              onClick={() => handleDelete(id)}
+              className="icon2"
+            />
+            <FaEdit
+              onClick={() => {
+                handleEdit(id);
+                setIsEdit(true);
+              }}
+              className="icon2"
+            />
           </p>
         </div>
+        {isEdit && <EditForm />}
       </div>
     </>
   );

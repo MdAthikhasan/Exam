@@ -15,12 +15,14 @@ const Jobs = () => {
     setServerData(filterd);
   }, [searchVale]);
 
+//   if (!searchVale) {
+//      setServerData(serverData);
+// }
 
 
 
 
 
-  
   return (
     <div className="jobs">
       {serverData?.length > 0 &&
