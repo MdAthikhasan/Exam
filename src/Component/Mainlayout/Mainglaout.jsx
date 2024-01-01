@@ -9,7 +9,15 @@ function Mainglaout() {
   return (
     <div>
       <Header />
-      <div style={{margin:'10px 0'}}>{navigation.state==='loading' ? <Loading/>: <Outlet/>}</div>
+      <div style={{ margin: "10px 0" }}>
+        {navigation.state === "loading" ? (
+          <Loading />
+        ) : (
+          <div style={{ minHeight:"100vh" }}>
+            <Outlet />
+          </div>
+        )}
+      </div>
       <Footer />
     </div>
   );

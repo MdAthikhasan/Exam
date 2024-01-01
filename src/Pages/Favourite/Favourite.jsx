@@ -11,7 +11,7 @@ import { AiFillGoogleCircle } from "react-icons/ai";
 import { AiFillAndroid } from "react-icons/ai";
 import { MdOutlineFavorite } from "react-icons/md";
 import { TiDeleteOutline } from "react-icons/ti";
-import { FaEdit } from "react-icons/fa";
+ import { FaEdit } from "react-icons/fa";
 import "../Jobs/job.css";
 const Favourite = () => {
   const { id } = useContext(MyContext);

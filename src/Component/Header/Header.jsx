@@ -1,15 +1,17 @@
-import React from "react";
+import React, { useContext } from "react";
 import { AiFillAmazonSquare } from "react-icons/ai";
-import { Link } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import { IoMdContact } from "react-icons/io";
 import { useAuthState } from "react-firebase-hooks/auth";
 import "./header.css";
 import firebaseAuth from "./../../Firebase/firebase";
 import { useSignOut } from "react-firebase-hooks/auth";
 import Swal from "sweetalert2";
+import { MyContext } from "../../Context/Context";
 const Header = () => {
   const [user, loading, error] = useAuthState(firebaseAuth);
   const [signOut] = useSignOut(firebaseAuth);
+  const { setSearchVale, searchVale } = useContext(MyContext);
 
   return (
     <nav>
@@ -19,6 +21,20 @@ const Header = () => {
         </div>
         <div>
           <ul className="flex  ul ">
+            <li>
+              <input
+                onChange={(e) => setSearchVale(e.target.value)}
+                value={searchVale}
+                style={{
+                  borderRadius: "16px",
+                  padding: "8px",
+                  outline: "none",
+                  border: "none",
+                }}
+                placeholder="Search for job"
+                type="text"
+              />
+            </li>
             <abbr title="Home">
               <li>
                 <Link to={"/"}>Home</Link>
@@ -73,16 +89,18 @@ const Header = () => {
                 </li>
               </abbr>
             ) : (
-              Swal.fire({
+              (Swal.fire({
                 title: "Without sign-in Cannot Apply",
                 text: "",
                 icon: "warning",
               }),
-              <abbr title="Login">
-                <li className="ulsignin">
-                  <Link to={"/sign"}>Sign In</Link>
-                </li>
-              </abbr>
+              (
+                <abbr title="Login">
+                  <li className="ulsignin">
+                    <Link to={"/sign"}>Sign In</Link>
+                  </li>
+                </abbr>
+              ))
             )}
           </ul>
         </div>

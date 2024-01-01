@@ -34,7 +34,7 @@ export const routes = createBrowserRouter([
         ),
         loader: async () => {
           let response = await axios.get("http://localhost:9000/jobs");
-          console.log(response);
+         
           return response.data;
         },
       },
