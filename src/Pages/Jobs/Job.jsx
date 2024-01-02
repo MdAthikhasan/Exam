@@ -7,6 +7,7 @@ import { CiLinkedin } from "react-icons/ci";
 import { FaFacebook } from "react-icons/fa";
 import { AiFillGoogleCircle } from "react-icons/ai";
 import { AiFillAndroid } from "react-icons/ai";
+import { MdOutlineFavoriteBorder } from "react-icons/md";
 import { MdOutlineFavorite } from "react-icons/md";
 import { TiDeleteOutline } from "react-icons/ti";
 import { FaEdit } from "react-icons/fa";
@@ -14,23 +15,44 @@ import { Link } from "react-router-dom";
 import { MyContext } from "../../Context/Context";
 import axios from "axios";
 import EditForm from "../../Component/EditForm/EditForm";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 const Job = ({ jobdata }) => {
-  const { title, logo, id, companyName, location } = jobdata;
-  const [count, setCount] = useState(0);
+  const { title, logo, id, companyName, location ,isFavourite} = jobdata;
  
-  const { handleFavourite, Edit, setEdit ,isEdit,setIsEdit } = useContext(MyContext);
-  //   const handleFavourite = () => {
-  //     setData([...data,id]);
+  const { setEdit, isEdit, setIsEdit } = useContext(MyContext);
 
-  //  }
+  const handleFavourite = (obj) => {
+    const status = obj?.isFavourite == "undefined" ? false : !obj.isFavourite;
+    let setobj = {
+      ...obj,
+      isFavourite:status
+    }
+    try {
+      axios.put(`http://localhost:9000/jobs/${obj.id}`, setobj);
+        toast.success("Added  to  favourite");
+    } catch (error) {
+      console.log("favourite", error);
+    }
+  };
+  const handeleDeleteFavourite = (jobData) => {
+    let setobj = {
+      ...jobData,
+      isFavourite:false,
+    };
+    try {
+      axios.put(`http://localhost:9000/jobs/${jobData.id}`, setobj);
+      toast.error("Removed from favourite");
+    } catch (error) {
+      console.log("favourite", error);
+    }
+}
   const handleDelete = async (id) => {
     try {
       await axios.delete(`http://localhost:9000/jobs/${id}`);
-      setCount((prevCount) => prevCount + 1);
     } catch (error) {
       console.error("Error deleting job:", error.message);
     }
-    setCount(count + 1);
   };
   const handleEdit = (id) => {
     if (jobdata.id == id) {
@@ -40,6 +62,7 @@ const Job = ({ jobdata }) => {
   return (
     <>
       <div className="jobcard">
+   
         <Link style={{ background: "none" }} to={`/jobs/${id}`}>
           <div>
             <p className="borderbtm">
@@ -84,10 +107,24 @@ const Job = ({ jobdata }) => {
             <AiFillAndroid className="icon2" />
           </p>
           <p>
-            <MdOutlineFavorite
-              onClick={() => handleFavourite(id)}
-              className="icon2"
-            />
+            {isFavourite ? (
+              <MdOutlineFavorite
+                className="icon2"
+                onClick={() => {
+                  handeleDeleteFavourite(jobdata)
+                  ;
+                }}
+              />
+            ) : (
+              <MdOutlineFavoriteBorder
+                onClick={() => {
+                    handleFavourite(jobdata);
+                    
+                }}
+                className="icon2"
+              />
+            )}
+
             <TiDeleteOutline
               onClick={() => handleDelete(id)}
               className="icon2"

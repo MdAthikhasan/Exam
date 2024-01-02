@@ -40,13 +40,14 @@
     margin-left: 5px;
     
 }
-.icon2:hover{
+ 
+/* .icon2:hover{
 padding: 3px;
  font-size: 20px;
  border-radius: 50%;
  background-color: rgb(126, 109, 109);
  transition: .5s linear;
-}
+} */
 .borderbtm{
     padding-bottom: 10px;
     border-bottom: 1px solid rgb(217, 210, 210) ;

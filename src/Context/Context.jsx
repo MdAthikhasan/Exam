@@ -5,11 +5,12 @@ const Context = ({ children }) => {
   const [id, setId] = useState([]);
   const [searchVale, setSearchVale] = useState("");
   const [Edit, setEdit] = useState();
-    const [isEdit, setIsEdit] = useState(false);
-  const handleFavourite = (serverId) => {
-    setId([...id, serverId]);
-  };
-  console.log(searchVale);
+  const [isEdit, setIsEdit] = useState(false);
+  
+  // const handleFavourite = (serverId) => {
+  //   setId([...id, serverId]);
+  // };
+ 
   let obj = {
     setIsEdit,
     isEdit,
@@ -17,7 +18,6 @@ const Context = ({ children }) => {
     setEdit,
     setSearchVale,
     searchVale,
-    handleFavourite,
     id,
     setId,
   };

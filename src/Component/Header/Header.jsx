@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { AiFillAmazonSquare } from "react-icons/ai";
+import { FiAlignJustify } from "react-icons/fi";
 import { Link, useLoaderData } from "react-router-dom";
 import { IoMdContact } from "react-icons/io";
 import { useAuthState } from "react-firebase-hooks/auth";
@@ -16,25 +17,32 @@ const Header = () => {
   return (
     <nav>
       <div className="nabvar flex">
-        <div>
-          <AiFillAmazonSquare className="nablogo" />
+        <div className="fixedicon">
+          <div>
+            <img
+              className="navlogo"
+              src={
+                "https://www.searchenginejournal.com/wp-content/uploads/2017/06/shutterstock_268688447.jpg"
+              }
+              alt=""
+            />
+          </div>
+          <input
+            onChange={(e) => setSearchVale(e.target.value)}
+            value={searchVale}
+            className="inputbox"
+            type="text"
+            placeholder="Search for job"
+          />
+          <span className="alignjustify">
+            <abbr title="Your accout">
+              <FiAlignJustify />
+            </abbr>
+          </span>
         </div>
+
         <div>
-          <ul className="flex  ul ">
-            <li>
-              <input
-                onChange={(e) => setSearchVale(e.target.value)}
-                value={searchVale}
-                style={{
-                  borderRadius: "16px",
-                  padding: "8px",
-                  outline: "none",
-                  border: "none",
-                }}
-                placeholder="Search for job"
-                type="text"
-              />
-            </li>
+          <ul className="flex  ul">
             <abbr title="Home">
               <li>
                 <Link to={"/"}>Home</Link>
@@ -63,7 +71,7 @@ const Header = () => {
           </ul>
         </div>
         <div>
-          <ul className="flex ">
+          <ul className="flex">
             <abbr title="Account">
               <li>
                 {!user?.photoURL ? (
@@ -82,26 +90,26 @@ const Header = () => {
                 )}
               </li>
             </abbr>
-            {user ? (
-              <abbr title="sign out">
-                <li onClick={() => signOut()} className="ulsignin">
-                  <Link>Sign Out</Link>
-                </li>
-              </abbr>
-            ) : (
-              (Swal.fire({
-                title: "Without sign-in Cannot Apply",
-                text: "",
-                icon: "warning",
-              }),
-              (
+            {
+              user ? (
+                <abbr title="sign out">
+                  <li onClick={() => signOut()} className="ulsignin">
+                    <Link>Sign Out</Link>
+                  </li>
+                </abbr>
+              ) : (
                 <abbr title="Login">
                   <li className="ulsignin">
                     <Link to={"/sign"}>Sign In</Link>
                   </li>
                 </abbr>
-              ))
-            )}
+              )
+              // (Swal.fire({
+              //   title: "Without sign-in Cannot Apply",
+              //   text: "",
+              //   icon: "warning",
+              // }),
+            }
           </ul>
         </div>
       </div>

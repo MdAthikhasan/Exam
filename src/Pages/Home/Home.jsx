@@ -14,7 +14,7 @@ const Home = () => {
         <div className="left-side">
           <h1 className="title">
             Build your careear in{" "}
-            <span style={{ color: "green" }}>
+            <span className="text" >
               halal path the career compass finding north
             </span>{" "}
             in Your Job Journey

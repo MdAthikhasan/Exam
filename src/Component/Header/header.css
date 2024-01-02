@@ -12,13 +12,18 @@
   background-color: aliceblue;
 
 }
-.nablogo{
+.navlogo{
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
   font-size: 50px;
+  margin-left: 20px;
 }
 .nabvar{
   box-shadow: 2px 2px 2px 2px rgb(244, 240, 240);
+  /* width: 100%; */
 }
-.nabvar li {
+.nabvar li ,.alignjustify {
   padding: 10px;
 
 }
@@ -43,4 +48,61 @@
     color:aliceblue;
     font-size: 13px;
 }
-/** //  apple
+ .alignjustify{
+  display: none;
+  font-size: 20px;
+  
+ }
+
+ .fixedicon {
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   
+ }
+ .inputbox{
+  margin-left: 100px;
+  border-radius: 15px;
+  padding: 8px;
+  outline: none;
+  border: none;
+  
+ }
+.inputbox:hover{
+   border-radius: 15px;
+  outline: 1px solid blue;
+ transition: .5s linear; 
+  } 
+ @media only screen and (max-width: 768px) {
+    .alignjustify {
+        display: block;
+        margin-left: 20px;
+      }
+   .nabvar {
+    padding: 5px;
+ 
+  
+  }
+ul{
+  text-align: center;
+}
+  .nablogo {
+    font-size: 1.5em;
+  }
+
+ .flex{
+  display: block;
+ }
+ 
+ .inputbox{
+  margin-left: 28px;
+ }
+/*  
+.links-div{
+  position: absolute;
+  z-index: 99;
+  background-color: rgb(233, 204, 165);
+} */
+ 
+} 
+  

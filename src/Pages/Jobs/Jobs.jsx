@@ -4,8 +4,11 @@ import Job from "./Job";
 import "./job.css";
 import { useLoaderData } from "react-router-dom";
 import { MyContext } from "../../Context/Context";
+import { useAuthState } from 'react-firebase-hooks/auth';
+import firebaseAuth from './../../Firebase/firebase';
 const Jobs = () => {
   const [serverData, setServerData] = useState(useLoaderData());
+  const [user]= useAuthState(firebaseAuth)
   // const jobdatas = ;
   const { searchVale } = useContext(MyContext);
   useEffect(() => {
@@ -15,13 +18,9 @@ const Jobs = () => {
     setServerData(filterd);
   }, [searchVale]);
 
-//   if (!searchVale) {
-//      setServerData(serverData);
-// }
-
-
-
-
+  if (!user) {
+     
+  }
 
   return (
     <div className="jobs">

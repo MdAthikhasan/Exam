@@ -7,30 +7,31 @@ import {
   useSignInWithGoogle,
 } from "react-firebase-hooks/auth";
 import firebaseAuth from "../../../Firebase/firebase";
-// import firebaseAuth from "../../../Firebase/firebase";
+ 
 const Sign = () => {
   const [createUserWithEmailAndPassword, euser, eloading, eerror] =
     useCreateUserWithEmailAndPassword(firebaseAuth);
   const [signInWithGoogle, guser, gloading, gerror] =
     useSignInWithGoogle(firebaseAuth);
-  if (guser) {
-      // console.log(guser)
-    }
-  if (gloading) {
-    // console.log(gloading);
-  }
-  if (gerror) {
-    // console.log(gerror);
-  }
-  if (euser) {
-    console.log(euser);
-  }
-  if (eloading) {
-    // console.log(eloading);
-  }
-  if (eerror) {
-    // console.log(eerror);
-  }
+
+  // if (guser) {
+  //     // console.log(guser)
+  //   }
+  // if (gloading) {
+  //   // console.log(gloading);
+  // }
+  // if (gerror) {
+  //   // console.log(gerror);
+  // }
+  // if (euser) {
+  //   console.log(euser);
+  // }
+  // if (eloading) {
+  //   // console.log(eloading);
+  // }
+  // if (eerror) {
+  //   // console.log(eerror);
+  // }
   const [formData, setFormData] = useState({
     username: "",
     email: "",
@@ -56,7 +57,7 @@ const Sign = () => {
       <form onSubmit={handleSubmit}>
         <fieldset style={{ padding: "15px" }}>
           <legend style={{ fontSize: "25px" }}>
-            {" "}
+    
             &nbsp;&nbsp;Sign Up &nbsp;&nbsp;
           </legend>
           <label>

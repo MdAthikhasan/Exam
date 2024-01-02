@@ -4,6 +4,7 @@ import React, { useContext, useState } from "react";
 import "../Apply/jobForm.css";
 import { MyContext } from "../../Context/Context";
 import axios from "axios";
+import { toast } from "react-toastify";
 // import axios from "axios";
 const EditForm = () => {
   const { Edit, setIsEdit } = useContext(MyContext);
@@ -26,9 +27,11 @@ const EditForm = () => {
     e.preventDefault();
 
     try {
-      await axios.put(`http://localhost:9000/jobs/${id}`, newInput);
+        await axios.put(`http://localhost:9000/jobs/${id}`, newInput);
+        toast.success('added to favourite')
     } catch (error) {
-      console.log(error);
+        toast.error('dont save to favourite')
+    
     }
 
     setNewInput({
@@ -106,7 +109,7 @@ const EditForm = () => {
             className="textare"
             name="description"
             value={description || ""}
-            placeholder="   Description"
+            placeholder="Description"
             onChange={handleChange}
           />
         </label>

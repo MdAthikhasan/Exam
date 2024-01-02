@@ -11,20 +11,23 @@ import { AiFillGoogleCircle } from "react-icons/ai";
 import { AiFillAndroid } from "react-icons/ai";
 import { MdOutlineFavorite } from "react-icons/md";
 import { TiDeleteOutline } from "react-icons/ti";
- import { FaEdit } from "react-icons/fa";
+import { FaEdit } from "react-icons/fa";
 import "../Jobs/job.css";
 const Favourite = () => {
-  const { id } = useContext(MyContext);
-  const serverDatas = useLoaderData();
+  // const { id } = useContext(MyContext);
+  const [serverDatas, setServerData] = useState(useLoaderData());
 
-  const [filteredData, setFilteredData] = useState([]);
+  // const [filteredData, setFilteredData] = useState([]);
 
   useEffect(() => {
-    const filtered = serverDatas?.filter((serverData) =>
-      id?.includes(serverData.id)
-    );
-    setFilteredData(filtered);
-  }, [id]);
+    setServerData(serverDatas);
+  }, [serverDatas]);
+  // useEffect(() => {
+  //   const filtered = serverDatas?.filter((serverData) =>
+  //     id?.includes(serverData.id)
+  //   );
+  //   setFilteredData(filtered);
+  // }, [id]);
 
   return (
     <div
@@ -34,60 +37,62 @@ const Favourite = () => {
         gap: "10px",
       }}
     >
-      {filteredData.length > 0 &&
-        filteredData?.map((mapvalue) => {
+      {serverDatas.length > 0 &&
+        serverDatas.map((mapvalue) => {
           return (
-            <div key={mapvalue?.id} className="jobcard">
-              {console.log(mapvalue)}
-              <div>
-                <p className="borderbtm">
-                  we are looking for
-                  <img
-                    style={{
-                      marginLeft: "8px",
-                      borderRadius: "50%",
-                      width: "30px",
-                      height: "30px",
-                      cursor: "pointer",
-                    }}
-                    src={mapvalue?.logo}
-                    alt=""
-                  />
-                </p>{" "}
-                <br />
-                <h2>{mapvalue?.title}</h2> <br />
-                <h3 style={{ color: "blue" }}>{mapvalue?.companyName}</h3>
+            mapvalue.isFavourite == true && (
+              <div key={mapvalue?.id} className="jobcard">
+                {console.log(mapvalue)}
+                <div>
+                  <p className="borderbtm">
+                    we are looking for
+                    <img
+                      style={{
+                        marginLeft: "8px",
+                        borderRadius: "50%",
+                        width: "30px",
+                        height: "30px",
+                        cursor: "pointer",
+                      }}
+                      src={mapvalue?.logo}
+                      alt=""
+                    />
+                  </p>{" "}
+                  <br />
+                  <h2>{mapvalue?.title}</h2> <br />
+                  <h3 style={{ color: "blue" }}>{mapvalue?.companyName}</h3>
+                </div>
+                {/* </Link> */}
+                <div className="icons">
+                  <p>
+                    <CiTrophy className="icon1" />
+                    1235
+                  </p>
+                  <p>
+                    <AiFillTag className="icon" />
+                    Product development
+                  </p>
+                  <p>
+                    <IoLocationSharp className="icon" />
+                    {mapvalue?.location}
+                  </p>
+                </div>
+                <div className="social-icons">
+                  <p>
+                    <AiFillTwitterCircle className="icon2" />
+                    <CiLinkedin className="icon2" />
+                    <FaFacebook className="icon2" />
+                    <AiFillGoogleCircle className="icon2" />
+                    <AiFillAndroid className="icon2" />
+                  </p>
+                  <p>
+                    <MdOutlineFavorite className="icon2" />
+                    <TiDeleteOutline className="icon2" />
+                    <FaEdit className="icon2" />
+                  </p>
+                </div>
               </div>
-              {/* </Link> */}
-              <div className="icons">
-                <p>
-                  <CiTrophy className="icon1" />
-                  1235
-                </p>
-                <p>
-                  <AiFillTag className="icon" />
-                  Product development
-                </p>
-                <p>
-                  <IoLocationSharp className="icon" />
-                  {mapvalue?.location}
-                </p>
-              </div>
-              <div className="social-icons">
-                <p>
-                  <AiFillTwitterCircle className="icon2" />
-                  <CiLinkedin className="icon2" />
-                  <FaFacebook className="icon2" />
-                  <AiFillGoogleCircle className="icon2" />
-                  <AiFillAndroid className="icon2" />
-                </p>
-                <p>
-                  <MdOutlineFavorite className="icon2" />
-                  <TiDeleteOutline className="icon2" />
-                  <FaEdit className="icon2" />
-                </p>
-              </div>
-            </div>
+            )
           );
         })}
     </div>
