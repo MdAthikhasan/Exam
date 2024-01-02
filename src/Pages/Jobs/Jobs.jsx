@@ -2,14 +2,29 @@ import React, { useContext, useEffect, useState } from "react";
 
 import Job from "./Job";
 import "./job.css";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import { MyContext } from "../../Context/Context";
-import { useAuthState } from 'react-firebase-hooks/auth';
-import firebaseAuth from './../../Firebase/firebase';
+ 
+
 const Jobs = () => {
   const [serverData, setServerData] = useState(useLoaderData());
-  const [user]= useAuthState(firebaseAuth)
-  // const jobdatas = ;
+
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     const data = await useLoaderData();
+
+  //   };
+  //   setServerData(data)
+  //   fetchData();
+  // },[]);
+
+  // if (authLoading) {
+  //   return <Loading />;
+  // }
+  // if (!user) {
+  //  return  navigate("/sign");
+  // }
+
   const { searchVale } = useContext(MyContext);
   useEffect(() => {
     const filterd = serverData?.filter((item) =>
@@ -17,10 +32,6 @@ const Jobs = () => {
     );
     setServerData(filterd);
   }, [searchVale]);
-
-  if (!user) {
-     
-  }
 
   return (
     <div className="jobs">

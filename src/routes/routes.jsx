@@ -33,8 +33,13 @@ export const routes = createBrowserRouter([
           </Private>
         ),
         loader: async () => {
-          let response = await axios.get("http://localhost:9000/jobs");
-         
+          let response;
+          try {
+            response = await axios.get("http://localhost:9000/jobs");
+          } catch (error) {
+            console.log(error);
+          }
+
           return response.data;
         },
       },

@@ -7,31 +7,15 @@ import {
   useSignInWithGoogle,
 } from "react-firebase-hooks/auth";
 import firebaseAuth from "../../../Firebase/firebase";
- 
+import { toast } from "react-toastify";
+import { AiFillCalculator } from "react-icons/ai";
+
 const Sign = () => {
   const [createUserWithEmailAndPassword, euser, eloading, eerror] =
     useCreateUserWithEmailAndPassword(firebaseAuth);
   const [signInWithGoogle, guser, gloading, gerror] =
     useSignInWithGoogle(firebaseAuth);
 
-  // if (guser) {
-  //     // console.log(guser)
-  //   }
-  // if (gloading) {
-  //   // console.log(gloading);
-  // }
-  // if (gerror) {
-  //   // console.log(gerror);
-  // }
-  // if (euser) {
-  //   console.log(euser);
-  // }
-  // if (eloading) {
-  //   // console.log(eloading);
-  // }
-  // if (eerror) {
-  //   // console.log(eerror);
-  // }
   const [formData, setFormData] = useState({
     username: "",
     email: "",
@@ -43,12 +27,28 @@ const Sign = () => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
-
+ console.log(formData.password ,formData.confirmpassword);
   const handleSubmit = (e) => {
     e.preventDefault();
-    setFormData({ username: "", email: "", password: "", confirmpassword: "" });
+    if (formData.password == formData.confirmpassword) {
+      createUserWithEmailAndPassword(formData.email, formData.password);
+       setFormData({
+         username: "",
+         email: "",
+         password: "",
+         confirmpassword: "",
+       });
+       alert("Sign uped successfully");
+   toast.success("Sign uped successfully");
+ } else {
+      toast.error("Password dont matched");
+      alert("Password dont matched");
+ }
+   
   };
-
+  const handleGoogleSubmit = () => {
+   
+  };
   return (
     <div className="form">
       <h4>
@@ -57,7 +57,6 @@ const Sign = () => {
       <form onSubmit={handleSubmit}>
         <fieldset style={{ padding: "15px" }}>
           <legend style={{ fontSize: "25px" }}>
-    
             &nbsp;&nbsp;Sign Up &nbsp;&nbsp;
           </legend>
           <label>
@@ -66,7 +65,7 @@ const Sign = () => {
               type="text"
               name="username"
               value={formData.username}
-              onChange={handleChange}
+              onChange={(e) => handleChange(e)}
               placeholder="Enter name"
             />
           </label>
@@ -77,7 +76,7 @@ const Sign = () => {
               type="email"
               name="email"
               value={formData.email}
-              onChange={handleChange}
+              onChange={(e) => handleChange(e)}
               placeholder="Enter email or phone number"
             />
           </label>
@@ -88,7 +87,7 @@ const Sign = () => {
               type="password"
               name="password"
               value={formData.password}
-              onChange={handleChange}
+              onChange={(e) => handleChange(e)}
               placeholder="Password"
             />
           </label>
@@ -99,7 +98,7 @@ const Sign = () => {
               type="password"
               name="confirmpassword"
               value={formData.confirmpassword}
-              onChange={handleChange}
+              onChange={(e) => handleChange(e)}
               placeholder="ConfirmPassword"
             />
           </label>
@@ -109,9 +108,7 @@ const Sign = () => {
             Sign up with google
           </div>
           <button
-            onClick={() =>
-              createUserWithEmailAndPassword(formData.email, formData.password)
-            }
+            onClick={() => handleGoogleSubmit()}
             className="button"
             type="submit"
           >

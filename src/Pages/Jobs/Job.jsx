@@ -11,34 +11,36 @@ import { MdOutlineFavoriteBorder } from "react-icons/md";
 import { MdOutlineFavorite } from "react-icons/md";
 import { TiDeleteOutline } from "react-icons/ti";
 import { FaEdit } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { MyContext } from "../../Context/Context";
 import axios from "axios";
 import EditForm from "../../Component/EditForm/EditForm";
-import { ToastContainer, toast } from "react-toastify";
+
 import "react-toastify/dist/ReactToastify.css";
+
 const Job = ({ jobdata }) => {
-  const { title, logo, id, companyName, location ,isFavourite} = jobdata;
- 
+  const { title, logo, id, companyName, location, isFavourite } = jobdata;
+
   const { setEdit, isEdit, setIsEdit } = useContext(MyContext);
 
   const handleFavourite = (obj) => {
     const status = obj?.isFavourite == "undefined" ? false : !obj.isFavourite;
     let setobj = {
       ...obj,
-      isFavourite:status
-    }
+      isFavourite: status,
+    };
     try {
       axios.put(`http://localhost:9000/jobs/${obj.id}`, setobj);
-        toast.success("Added  to  favourite");
+      toast.success("Added  to  favourite");
     } catch (error) {
       console.log("favourite", error);
     }
   };
+
   const handeleDeleteFavourite = (jobData) => {
     let setobj = {
       ...jobData,
-      isFavourite:false,
+      isFavourite: false,
     };
     try {
       axios.put(`http://localhost:9000/jobs/${jobData.id}`, setobj);
@@ -46,7 +48,7 @@ const Job = ({ jobdata }) => {
     } catch (error) {
       console.log("favourite", error);
     }
-}
+  };
   const handleDelete = async (id) => {
     try {
       await axios.delete(`http://localhost:9000/jobs/${id}`);
@@ -62,7 +64,6 @@ const Job = ({ jobdata }) => {
   return (
     <>
       <div className="jobcard">
-   
         <Link style={{ background: "none" }} to={`/jobs/${id}`}>
           <div>
             <p className="borderbtm">
@@ -111,15 +112,13 @@ const Job = ({ jobdata }) => {
               <MdOutlineFavorite
                 className="icon2"
                 onClick={() => {
-                  handeleDeleteFavourite(jobdata)
-                  ;
+                  handeleDeleteFavourite(jobdata);
                 }}
               />
             ) : (
               <MdOutlineFavoriteBorder
                 onClick={() => {
-                    handleFavourite(jobdata);
-                    
+                  handleFavourite(jobdata);
                 }}
                 className="icon2"
               />
