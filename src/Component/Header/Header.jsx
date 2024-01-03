@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { AiFillAmazonSquare } from "react-icons/ai";
 import { FiAlignJustify } from "react-icons/fi";
 import { Link, useLoaderData } from "react-router-dom";
@@ -7,13 +7,14 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import "./header.css";
 import firebaseAuth from "./../../Firebase/firebase";
 import { useSignOut } from "react-firebase-hooks/auth";
-import Swal from "sweetalert2";
+// import Swal from "sweetalert2";
 import { MyContext } from "../../Context/Context";
 const Header = () => {
   const [user, loading, error] = useAuthState(firebaseAuth);
+  const [isTrue, setIsTrue] = useState(false);
   const [signOut] = useSignOut(firebaseAuth);
   const { setSearchVale, searchVale } = useContext(MyContext);
-
+ 
   return (
     <nav>
       <div className="nabvar flex">
@@ -34,7 +35,7 @@ const Header = () => {
             type="text"
             placeholder="Search for job"
           />
-          <span className="alignjustify">
+          <span onClick={() => setIsTrue(!isTrue)} className="alignjustify">
             <abbr title="Your accout">
               <FiAlignJustify />
             </abbr>
@@ -42,7 +43,8 @@ const Header = () => {
         </div>
 
         <div>
-          <ul className="flex  ul">
+          {/* flex ulb ul " */}
+          <ul className={!isTrue ? "flex" : "ul"}>
             <abbr title="Home">
               <li>
                 <Link to={"/"}>Home</Link>

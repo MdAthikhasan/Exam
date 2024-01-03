@@ -10,15 +10,15 @@ const Home = () => {
   const [isTrue, setIsTrue] = useState(false);
   const [user, authLoading] = useAuthState(firebaseAuth);
 
-  const navigate = useNavigate();
-   console.log(authLoading)
+  // const navigate = useNavigate();
+  //  console.log(authLoading)
   if (authLoading) {
     return <Loading />;
   }
-  if (!user) {
-    navigate("/sign");
-    return null
-  }
+  // if (!user) {
+  //   navigate("/sign");
+  //   return null
+  // }
 
   return (
     <div>

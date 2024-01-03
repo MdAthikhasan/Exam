@@ -45,7 +45,7 @@ const EditForm = () => {
   };
  
   return (
-    <div style={{ background: "green" }} className="jobform">
+    <div style={{ background: "#91C8E4" }} className="jobform">
       <h2>
         Edit Application Form <span onClick={() => setIsEdit(false)}>❌</span>
       </h2>

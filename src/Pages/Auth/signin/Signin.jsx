@@ -2,39 +2,54 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
 import firebaseAuth from "../../../Firebase/firebase";
+import Swal from "sweetalert2";
+import Loading from "./../../../Component/Loading/Loading";
 const Signin = () => {
-    const [loginData, setLoginData] = useState({
-        email: '',
-        password:''
-        
+  const navigate = useNavigate();
+  const [loginData, setLoginData] = useState({
+    email: "",
+    password: "",
   });
   const [signInWithEmailAndPassword, user, loading, error] =
     useSignInWithEmailAndPassword(firebaseAuth);
+  console.log(user);
+  console.log(error);
+
+  if (loading) {
+    return <Loading />;
+  }
+  if (error) {
+    return Swal.fire({
+      title: `Invalid Email or  Password`,
+      text: "",
+      icon: "warning",
+    });
+  }
+  if (user) {
+    Swal.fire({
+      title: "successfully login done!",
+      text: "",
+      icon: "success",
+    });
+    navigate("/");
+  }
   const handleChange = (e) => {
-      const { name, value } = e.target;
-      setLoginData({ ...loginData, [name]: value });
-    };
-    const handleSubmit = async (e) => {
-        e.preventDefault()
-        await signInWithEmailAndPassword(loginData?.email, loginData?.password);
-        setLoginData({ email: "", password: "" });
-
+    const { name, value } = e.target;
+    setLoginData({ ...loginData, [name]: value });
+  };
+  const { email, password } = loginData;
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (!email || !password) {
+      return Swal.fire({
+        title: "Fill up the input box",
+        text: "",
+        icon: "warning",
+      });
     }
-    const navigate = useNavigate()
-    if (user) {
-        navigate('/')
-    }
-//   console.log(loginData?.email);
-//   const handleSubmit = async (e) => {
-//     e.preventDefault();
-//     let email = e.target.email?.value;
-//     let password = e.target.password?.value;
-//     setLoginData({...loginData, email, password });
-
-//     console.log("clicked");
-//     await signInWithEmailAndPassword( email,password);
-//     setLoginData({...loginData ,email:'', password:'' });
-//   };
+    await signInWithEmailAndPassword(email, password);
+    setLoginData({ email: "", password: "" });
+  };
 
   return (
     <div className="form">

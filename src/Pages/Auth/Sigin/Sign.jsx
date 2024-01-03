@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./sign.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 import {
   useCreateUserWithEmailAndPassword,
@@ -9,46 +9,58 @@ import {
 import firebaseAuth from "../../../Firebase/firebase";
 import { toast } from "react-toastify";
 import { AiFillCalculator } from "react-icons/ai";
+import Swal from "sweetalert2";
 
 const Sign = () => {
   const [createUserWithEmailAndPassword, euser, eloading, eerror] =
     useCreateUserWithEmailAndPassword(firebaseAuth);
   const [signInWithGoogle, guser, gloading, gerror] =
     useSignInWithGoogle(firebaseAuth);
-
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     username: "",
     email: "",
     password: "",
     confirmpassword: "",
   });
-
+  const { username, email, password, confirmpassword } = formData;
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
- console.log(formData.password ,formData.confirmpassword);
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (formData.password == formData.confirmpassword) {
-      createUserWithEmailAndPassword(formData.email, formData.password);
-       setFormData({
-         username: "",
-         email: "",
-         password: "",
-         confirmpassword: "",
+    if (!username || !email || !password || !confirmpassword) {
+      Swal.fire({
+        title: "Fill up the input box",
+        text: "",
+        icon: "warning",
+      });
+    }
+    else if (password == confirmpassword) {
+      createUserWithEmailAndPassword(email, password);
+      setFormData({
+        username: "",
+        email: "",
+        password: "",
+        confirmpassword:"",
+      });
+      navigate("/");
+        Swal.fire({
+          title: "Sign-up successfully done",
+          text: "",
+          icon: "success",
+        });
+    } else {
+       Swal.fire({
+         title: "Password dont matched",
+         text: "",
+         icon: "warning",
        });
-       alert("Sign uped successfully");
-   toast.success("Sign uped successfully");
- } else {
-      toast.error("Password dont matched");
-      alert("Password dont matched");
- }
-   
+    }
   };
-  const handleGoogleSubmit = () => {
-   
-  };
+
   return (
     <div className="form">
       <h4>
@@ -91,6 +103,7 @@ const Sign = () => {
               placeholder="Password"
             />
           </label>
+
           <br />
           <label>
             <input
@@ -107,11 +120,7 @@ const Sign = () => {
             <FcGoogle style={{ fontSize: "30px" }} />
             Sign up with google
           </div>
-          <button
-            onClick={() => handleGoogleSubmit()}
-            className="button"
-            type="submit"
-          >
+          <button className="button" type="submit">
             Sign Up
           </button>
         </fieldset>

@@ -33,24 +33,26 @@ export const routes = createBrowserRouter([
           </Private>
         ),
         loader: async () => {
-          let response;
+          let response1;
           try {
-            response = await axios.get("http://localhost:9000/jobs");
+            response1 = await axios.get("http://localhost:9000/jobs");
           } catch (error) {
             console.log(error);
           }
-
-          return response.data;
+          return response1?.data;
         },
       },
       {
-        path: "jobs/:id",
+        path: "/jobs/:id",
         element: <JobDetails />,
         loader: async ({ params }) => {
-          let response = await axios.get(
-            `http://localhost:9000/jobs/${params.id}`
-          );
-          return response.data;
+          let response;
+          try {
+            response = await axios.get(
+              `http://localhost:9000/jobs/${params.id}`
+            );
+          } catch (error) {}
+          return response?.data;
         },
       },
       {

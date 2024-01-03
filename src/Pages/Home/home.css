@@ -50,10 +50,10 @@
       position: relative;
       z-index: -1;
     }
-        .home-image {
-          width: 90vw;
-          height: 30vh;
-        }
+   .home-image {
+    width: 90vw;
+   height: 30vh;
+      }
   .title{
   font-size: 25px;
   font-weight: 200;

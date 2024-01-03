@@ -13,6 +13,7 @@ import { MdOutlineFavorite } from "react-icons/md";
 import { TiDeleteOutline } from "react-icons/ti";
 import { FaEdit } from "react-icons/fa";
 import "../Jobs/job.css";
+import './favourite.css'
 const Favourite = () => {
   // const { id } = useContext(MyContext);
   const [serverDatas, setServerData] = useState(useLoaderData());
@@ -33,7 +34,7 @@ const Favourite = () => {
     <div
       style={{
         display: "grid",
-        gridTemplateColumns: "repeat(3,1fr)",
+        gridTemplateColumns:"repeat(3,1fr)",
         gap: "10px",
       }}
     >

@@ -5,3 +5,8 @@
     text-decoration: none;
     list-style: none;
 }
+@media screen and (max-width: 768px) {
+    .jobs {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
