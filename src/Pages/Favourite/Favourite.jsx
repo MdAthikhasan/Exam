@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { MyContext } from "../../Context/Context";
+
 import { useLoaderData } from "react-router-dom";
 import { CiTrophy } from "react-icons/ci";
 import { AiFillTag } from "react-icons/ai";
@@ -43,7 +43,7 @@ const Favourite = () => {
           return (
             mapvalue.isFavourite == true && (
               <div key={mapvalue?.id} className="jobcard">
-                {console.log(mapvalue)}
+               
                 <div>
                   <p className="borderbtm">
                     we are looking for
@@ -63,7 +63,7 @@ const Favourite = () => {
                   <h2>{mapvalue?.title}</h2> <br />
                   <h3 style={{ color: "blue" }}>{mapvalue?.companyName}</h3>
                 </div>
-                {/* </Link> */}
+                
                 <div className="icons">
                   <p>
                     <CiTrophy className="icon1" />
@@ -87,7 +87,7 @@ const Favourite = () => {
                     <AiFillAndroid className="icon2" />
                   </p>
                   <p>
-                    <MdOutlineFavorite className="icon2" />
+                    <MdOutlineFavorite  className="icon2" />
                     <TiDeleteOutline className="icon2" />
                     <FaEdit className="icon2" />
                   </p>

@@ -17,13 +17,14 @@ import axios from "axios";
 import EditForm from "../../Component/EditForm/EditForm";
 
 import "react-toastify/dist/ReactToastify.css";
+import Swal from "sweetalert2";
 
-const Job = ({ jobdata }) => {
+const Job = ({ jobdata, func }) => {
   const { title, logo, id, companyName, location, isFavourite } = jobdata;
 
   const { setEdit, isEdit, setIsEdit } = useContext(MyContext);
 
-  const handleFavourite = (obj) => {
+  const handeleFavourite = (obj) => {
     const status = obj?.isFavourite == "undefined" ? false : !obj.isFavourite;
     let setobj = {
       ...obj,
@@ -31,31 +32,54 @@ const Job = ({ jobdata }) => {
     };
     try {
       axios.put(`http://localhost:9000/jobs/${obj.id}`, setobj);
-      toast.success("Added  to  favourite");
+      if (!obj.isFavourite) {
+           Swal.fire({
+             title: "Added to favourite!",
+             icon: "success",
+           });
+      } else {
+         Swal.fire({
+           title: "Removed from favourite!",
+           icon: "warning",
+         });
+      }
+    
     } catch (error) {
       console.log("favourite", error);
     }
+
+    func(status, obj.id);
   };
 
-  const handeleDeleteFavourite = (jobData) => {
-    let setobj = {
-      ...jobData,
-      isFavourite: false,
-    };
-    try {
-      axios.put(`http://localhost:9000/jobs/${jobData.id}`, setobj);
-      toast.error("Removed from favourite");
-    } catch (error) {
-      console.log("favourite", error);
-    }
-  };
+  // const handeleDeleteFavourite = (jobData) => {
+  //   func();
+  //   let setobj = {
+  //     ...jobData,
+  //     isFavourite: false,
+  //   };
+  //   try {
+  //     axios.put(`http://localhost:9000/jobs/${jobData.id}`, setobj);
+  //     Swal.fire({
+  //       title: "Removed from favourite!",
+  //       icon: "success",
+  //     });
+  //   } catch (error) {
+  //     console.log("favourite", error);
+  //   }
+  // };
+
   const handleDelete = async (id) => {
     try {
       await axios.delete(`http://localhost:9000/jobs/${id}`);
+      Swal.fire({
+        title: " Item Rimoved from !",
+        icon: "success",
+      });
     } catch (error) {
       console.error("Error deleting job:", error.message);
     }
   };
+
   const handleEdit = (id) => {
     if (jobdata.id == id) {
       setEdit(jobdata);
@@ -91,11 +115,11 @@ const Job = ({ jobdata }) => {
             1235
           </p>
           <p>
-            <AiFillTag className="icon" />
+            <AiFillTag className="icon1" />
             Product development
           </p>
           <p>
-            <IoLocationSharp className="icon" />
+            <IoLocationSharp className="icon1" />
             {location}
           </p>
         </div>
@@ -108,21 +132,12 @@ const Job = ({ jobdata }) => {
             <AiFillAndroid className="icon2" />
           </p>
           <p>
-            {isFavourite ? (
-              <MdOutlineFavorite
-                className="icon2"
-                onClick={() => {
-                  handeleDeleteFavourite(jobdata);
-                }}
-              />
-            ) : (
-              <MdOutlineFavoriteBorder
-                onClick={() => {
-                  handleFavourite(jobdata);
-                }}
-                className="icon2"
-              />
-            )}
+            <MdOutlineFavorite
+              className={isFavourite ? "icon3" : "icon2"}
+              onClick={() => {
+                handeleFavourite(jobdata);
+              }}
+            />
 
             <TiDeleteOutline
               onClick={() => handleDelete(id)}

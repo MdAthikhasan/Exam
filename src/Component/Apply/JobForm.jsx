@@ -3,6 +3,7 @@ import React, { useState } from "react";
 // import "./jobForm.css";
 import './jobForm.css'
 import axios from "axios";
+import Swal from "sweetalert2";
 const JobForm = () => {
   const [formData, setFormData] = useState({
     title: "",
@@ -12,11 +13,10 @@ const JobForm = () => {
     location: "",
     description: "",
   });
+ 
+  
+  const { title, logo, comname, position, location, description } = formData;
   const handleChange = (e) => {
-    // console.log(e.target.value);
-
-    // const { name, value } = e.target.name;
-
     setFormData((prevFormData) => ({
       ...prevFormData,
       [e.target.name]: e.target.value,
@@ -24,10 +24,17 @@ const JobForm = () => {
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (!title || !logo || !comname || !position || !location || !description) {
+      return Swal.fire({
+        title: "Please fill up input box",
+        icon: "warning",
+      });
+    }
    await axios
       .post("http://localhost:9000/jobs" , formData)
       .then((res) => console.log(res))
       .catch((error) => console.log(error));
+      
 
     setFormData({
       title: "",
@@ -38,7 +45,6 @@ const JobForm = () => {
       description: "",
     });
   };
-  const { title, logo, comname, position, location, description } = formData;
   return (
     <div className="jobform">
       <h2>Job Application Form</h2>
