@@ -1,7 +1,6 @@
 import React from "react";
+import "./jobDetails.css";
 import { useLoaderData } from "react-router-dom";
-import { AiFillTag } from "react-icons/ai";
-import { CiTrophy } from "react-icons/ci";
 import { IoLocationSharp } from "react-icons/io5";
 import { AiFillTwitterCircle } from "react-icons/ai";
 import { CiLinkedin } from "react-icons/ci";
@@ -11,7 +10,6 @@ import { AiFillAndroid } from "react-icons/ai";
 import { MdOutlineFavorite } from "react-icons/md";
 import { TiDeleteOutline } from "react-icons/ti";
 import { FaEdit } from "react-icons/fa";
-import "./jobDetails.css";
 const JobDetails = () => {
   const data = useLoaderData();
 

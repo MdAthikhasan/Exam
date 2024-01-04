@@ -8,11 +8,9 @@ import Jobs from "./../Pages/Jobs/Jobs";
 import Favourite from "../Pages/Favourite/Favourite";
 import Signin from "../Pages/Auth/signin/Signin";
 import Private from "./Private";
-
 import Erro from "./../Pages/Error/Erro";
 import axios from "axios";
 import JobDetails from "../Pages/Jobs/JobDetails";
-
 export const routes = createBrowserRouter([
   {
     path: "/",
