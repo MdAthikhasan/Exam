@@ -106,11 +106,7 @@ const Header = () => {
                   </li>
                 </abbr>
               )
-              // (Swal.fire({
-              //   title: "Without sign-in Cannot Apply",
-              //   text: "",
-              //   icon: "warning",
-              // }),
+              
             }
           </ul>
         </div>

@@ -17,6 +17,14 @@ const Sign = () => {
   const [signInWithGoogle, guser, gloading, gerror] =
     useSignInWithGoogle(firebaseAuth);
   const navigate = useNavigate();
+  if (guser) {
+     Swal.fire({
+       title: "Sign-up successfully done",
+       text: "",
+       icon: "success",
+     });
+    navigate("/")
+  }
   const [formData, setFormData] = useState({
     username: "",
     email: "",
@@ -37,27 +45,27 @@ const Sign = () => {
         text: "",
         icon: "warning",
       });
-    }
-    else if (password == confirmpassword) {
+    } else if (password == confirmpassword) {
       createUserWithEmailAndPassword(email, password);
+
       setFormData({
         username: "",
         email: "",
         password: "",
-        confirmpassword:"",
+        confirmpassword: "",
       });
-      navigate("/");
-        Swal.fire({
-          title: "Sign-up successfully done",
-          text: "",
-          icon: "success",
-        });
+      Swal.fire({
+        title: "Sign-up successfully done",
+        text: "",
+        icon: "success",
+      });
+      navigate("/");  
     } else {
-       Swal.fire({
-         title: "Password dont matched",
-         text: "",
-         icon: "warning",
-       });
+      Swal.fire({
+        title: "Password dont matched",
+        text: "",
+        icon: "warning",
+      });
     }
   };
 

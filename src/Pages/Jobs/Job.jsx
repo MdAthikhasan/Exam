@@ -18,12 +18,25 @@ import EditForm from "../../Component/EditForm/EditForm";
 
 import "react-toastify/dist/ReactToastify.css";
 import Swal from "sweetalert2";
+import Loading from "../../Component/Loading/Loading";
+import { useAuthState } from "react-firebase-hooks/auth";
+import firebaseAuth from "../../Firebase/firebase";
 
 const Job = ({ jobdata, func }) => {
   const { title, logo, id, companyName, location, isFavourite } = jobdata;
-
+const [user, authLoading, error] = useAuthState(firebaseAuth);
   const { setEdit, isEdit, setIsEdit } = useContext(MyContext);
-
+ if (authLoading) {
+   return <Loading />;
+ }
+ if (error) {
+   console.log(error);
+ }
+ if (!user) {
+   <Navigate to={"/sign"} />;
+ } else {
+   console.log("user ase");
+ }
   const handeleFavourite = (obj) => {
     const status = obj?.isFavourite == "undefined" ? false : !obj.isFavourite;
     let setobj = {
@@ -67,9 +80,8 @@ const Job = ({ jobdata, func }) => {
   //   }
   // };
 
-  const handleDelete = async (id) => {
+  const handleDelete = (id) => {
     try {
-      await axios.delete(`http://localhost:9000/jobs/${id}`);
       Swal.fire({
         title: "Are you sure?",
         text: "You won't be able to revert this!",
@@ -78,8 +90,9 @@ const Job = ({ jobdata, func }) => {
         confirmButtonColor: "#3085d6",
         cancelButtonColor: "#d33",
         confirmButtonText: "Yes, delete it!",
-      }).then((result) => {
+      }).then(async (result) => {
         if (result.isConfirmed) {
+          await axios.delete(`http://localhost:9000/jobs/${id}`);
           Swal.fire({
             title: "Deleted!",
             text: "Your file has been deleted.",

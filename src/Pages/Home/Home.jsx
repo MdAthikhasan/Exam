@@ -27,10 +27,8 @@ const Home = () => {
         <div className="left-side">
           <h1 className="title">
             Build your careear in{" "}
-            <span className="text">
-              halal path the career compass finding north
-            </span>{" "}
-            in Your Job Journey
+            <span className="text">Halal Path, God will help you</span> <br/> in your
+            job journey
           </h1>
           <div style={{ display: "flex", alignItems: "center" }}>
             <Link to={!user ? "/sign" : "/jobs"}>
@@ -38,7 +36,7 @@ const Home = () => {
             </Link>
             <Link>
               <button onClick={() => setIsTrue(true)} className="btn">
-              Haier Now
+                Haier Now
               </button>
             </Link>
           </div>
