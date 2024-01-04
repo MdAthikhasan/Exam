@@ -10,7 +10,8 @@ import Signin from "../Pages/Auth/signin/Signin";
 import Private from "./Private";
 import Erro from "./../Pages/Error/Erro";
 import axios from "axios";
-import JobDetails from "../Pages/Jobs/JobDetails";
+import JobDetails from "../Pages/Jobs/JobDetails/JobDetails";
+ 
 export const routes = createBrowserRouter([
   {
     path: "/",
@@ -39,7 +40,7 @@ export const routes = createBrowserRouter([
       },
       {
         path: "/jobs/:id",
-        element: <JobDetails />,
+        element: <JobDetails/>,
         loader: async ({ params }) => {
           let response;
           try {
