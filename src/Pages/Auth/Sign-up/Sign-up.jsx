@@ -7,9 +7,9 @@ import {
   useSignInWithGoogle,
 } from "react-firebase-hooks/auth";
 import firebaseAuth from "../../../Firebase/firebase";
-import { toast } from "react-toastify";
 import { AiFillCalculator } from "react-icons/ai";
 import Swal from "sweetalert2";
+import Loading from "../../../Component/Loading/Loading";
 
 const Sign_up = () => {
   const [createUserWithEmailAndPassword, euser, eloading, eerror] =
@@ -17,20 +17,32 @@ const Sign_up = () => {
   const [signInWithGoogle, guser, gloading, gerror] =
     useSignInWithGoogle(firebaseAuth);
   const navigate = useNavigate();
-  if (guser) {
+const [formData, setFormData] = useState({
+  username: "",
+  email: "",
+  password: "",
+  confirmpassword: "",
+});
+
+  if (gloading || eloading) {
+    return <Loading/>
+  } 
+  if (gerror || eerror) {
      Swal.fire({
-       title: "Sign-up successfully done",
+       title: "Error occured!",
        text: "",
-       icon: "success",
+       icon: "",
      });
-    navigate("/")
   }
-  const [formData, setFormData] = useState({
-    username: "",
-    email: "",
-    password: "",
-    confirmpassword: "",
-  });
+  if (guser || euser) {
+    Swal.fire({
+      title: "Sign-up successfully done",
+      text: "",
+      icon: "success",
+    });
+    navigate("/");
+  }
+  
   const { username, email, password, confirmpassword } = formData;
   const handleChange = (e) => {
     const { name, value } = e.target;

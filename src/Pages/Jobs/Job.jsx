@@ -30,10 +30,13 @@ const Job = ({ jobdata, func }) => {
     return <Loading />;
   }
   if (error) {
-    console.log(error);
+        Swal.fire({
+          title: "Error occured!",
+          icon: "error",
+        });
   }
   if (!user) {
-         return  <Navigate to={"/sign_up"} />;
+  return  <Navigate to={"/sign_up"} />;
   } 
   const handeleFavourite = (obj) => {
     const status = obj?.isFavourite == "undefined" ? false : !obj.isFavourite;

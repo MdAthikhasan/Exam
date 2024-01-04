@@ -22,7 +22,7 @@ const Favourite = () => {
     setServerData(serverDatas);
   }, [serverDatas]);
   const favDeletHandle = async (id) => {
-    console.log(id);
+    
     try {
       await axios.delete(`http://localhost:9000/jobs/${id}`);
       Swal.fire({

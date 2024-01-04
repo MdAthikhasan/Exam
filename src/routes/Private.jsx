@@ -6,9 +6,15 @@ import Loading from "../Component/Loading/Loading";
 import Swal from "sweetalert2";
 
 const Private = ({ children }) => {
-  const [user, authLoading] = useAuthState(firebaseAuth);
+  const [user, authLoading,error] = useAuthState(firebaseAuth);
   if (authLoading) {
     return <Loading />;
+  }
+  if (error) {
+       Swal.fire({
+         title: "Error occured!",
+         icon: "warning",
+       });
   }
   if (!user) {
     Swal.fire({

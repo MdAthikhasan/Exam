@@ -7,6 +7,7 @@ import firebaseAuth from "../../Firebase/firebase";
 import JobForm from "../../Component/Apply/JobForm";
 import Loading from "../../Component/Loading/Loading";
 import { MyContext } from "../../Context/Context";
+import Swal from "sweetalert2";
 const Home = () => {
   const { isTrue, setIsTrue } = useContext(MyContext);
   const [user, authLoading] = useAuthState(firebaseAuth);
@@ -14,7 +15,7 @@ const Home = () => {
   if (authLoading) {
     return <Loading />;
   }
- 
+
   return (
     <div>
       <div className={!isTrue ? "home" : "home_overlay"}>
@@ -29,7 +30,19 @@ const Home = () => {
               <button className="btn">Explore now</button>
             </Link>
             <Link>
-              <button onClick={() => setIsTrue(true)} className="btn">
+              <button
+                onClick={() => {
+                  if (!user) {
+                    Swal.fire({
+                      title: "Please sign_up !",
+                      icon: "warning",
+                    });
+                  } else {
+                    setIsTrue(true);
+                  }
+                }}
+                className="btn"
+              >
                 Post job
               </button>
             </Link>

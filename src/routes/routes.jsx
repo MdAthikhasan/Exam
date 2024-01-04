@@ -34,7 +34,7 @@ export const routes = createBrowserRouter([
           try {
             response1 = await axios.get("http://localhost:9000/jobs");
           } catch (error) {
-            <NetworkErrorPage />;
+           return  <NetworkErrorPage />;
           }
           return response1?.data;
         },
@@ -49,7 +49,7 @@ export const routes = createBrowserRouter([
               `http://localhost:9000/jobs/${params.id}`
             );
           } catch (error) {
-            <NetworkErrorPage />;
+            return  <NetworkErrorPage />;
           }
           return response?.data;
         },
@@ -70,7 +70,7 @@ export const routes = createBrowserRouter([
           try {
             response = await axios.get("http://localhost:9000/jobs");
           } catch (error) {
-            <NetworkErrorPage />;
+            return <NetworkErrorPage />;
           }
           return response?.data;
         },

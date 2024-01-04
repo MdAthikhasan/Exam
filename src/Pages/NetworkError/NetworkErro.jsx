@@ -2,7 +2,7 @@ import React from "react";
 
 const NetworkErrorPage = () => {
   const refreshPage = () => {
-    window.location.reload(true); // Reloads the current page, fetching the latest content
+    window.location.reload(true);  
   };
 
   return (
