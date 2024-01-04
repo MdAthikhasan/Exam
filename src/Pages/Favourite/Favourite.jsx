@@ -17,11 +17,7 @@ import "./favourite.css";
 import Swal from "sweetalert2";
 import axios from "axios";
 const Favourite = () => {
-  // const { id } = useContext(MyContext);
   const [serverDatas, setServerData] = useState(useLoaderData());
-
-  // const [filteredData, setFilteredData] = useState([]);
-
   useEffect(() => {
     setServerData(serverDatas);
   }, [serverDatas]);
@@ -47,6 +43,7 @@ const Favourite = () => {
         display: "grid",
         gridTemplateColumns: "repeat(3,1fr)",
         gap: "10px",
+        marginTop:"80px"
       }}
     >
       {serverDatas.length > 0 ? (

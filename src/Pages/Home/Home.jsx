@@ -11,8 +11,6 @@ const Home = () => {
   const { isTrue, setIsTrue } = useContext(MyContext);
   const [user, authLoading] = useAuthState(firebaseAuth);
 
-  // const navigate = useNavigate();
-  //  console.log(authLoading)
   if (authLoading) {
     return <Loading />;
   }
@@ -27,7 +25,7 @@ const Home = () => {
             in your job journey
           </h1>
           <div style={{ display: "flex", alignItems: "center" }}>
-            <Link to={!user ? "/sign" : "/jobs"}>
+            <Link to={!user ? "/sign_up" : "/jobs"}>
               <button className="btn">Explore now</button>
             </Link>
             <Link>

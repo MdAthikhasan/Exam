@@ -99,14 +99,14 @@ const Header = () => {
                   onClick={() => signOut()}
                   className="ulsignin"
                 >
-                  {/* <Link>Sign Out</Link> */}
-                  Sign Out
+                  <Link>Sign Out</Link>
+                   
                 </li>
               </abbr>
             ) : (
               <abbr title="Login">
                 <li className="ulsignin">
-                  <Link style={{ fontWeight: "bold" }} to={"/sign"}>
+                  <Link style={{ fontWeight: "bold" }} to={"/sign_up"}>
                     Sign In
                   </Link>
                 </li>

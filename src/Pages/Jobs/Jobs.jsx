@@ -34,7 +34,7 @@ const Jobs = () => {
     console.log(error);
   }
   if (!user) {
-   return  <Navigate to={"/sign"} state={{ from: location }} replace />;
+   return  <Navigate to={"/sign_up"} state={{ from: location }} replace />;
   }  
 
   useEffect(() => {

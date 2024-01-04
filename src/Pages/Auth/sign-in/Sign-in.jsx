@@ -4,7 +4,7 @@ import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
 import firebaseAuth from "../../../Firebase/firebase";
 import Swal from "sweetalert2";
 import Loading from "./../../../Component/Loading/Loading";
-const Signin = () => {
+const Sign_in = () => {
   const navigate = useNavigate();
   const [loginData, setLoginData] = useState({
     email: "",
@@ -54,7 +54,7 @@ const Signin = () => {
   return (
     <div className="form">
       <h4>
-        New to here ? <Link to={"/sign"}> Sign Up</Link>
+        New to here ? <Link to={"/sign_up"}> Sign Up</Link>
       </h4>
       <form onSubmit={handleSubmit}>
         <fieldset style={{ padding: "15px" }}>
@@ -95,4 +95,4 @@ const Signin = () => {
   );
 };
 
-export default Signin;
+export default Sign_in;

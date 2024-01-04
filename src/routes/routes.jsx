@@ -3,15 +3,16 @@ import App from "../App";
 import Home from "./../Pages/Home/Home";
 import About from "../Pages/About/About";
 import Contact from "../Pages/Contact/Contact";
-import Sign from "../Pages/Auth/Sigin/Sign";
 import Jobs from "./../Pages/Jobs/Jobs";
 import Favourite from "../Pages/Favourite/Favourite";
-import Signin from "../Pages/Auth/signin/Signin";
 import Private from "./Private";
 import Erro from "./../Pages/Error/Erro";
 import axios from "axios";
 import JobDetails from "../Pages/Jobs/JobDetails/JobDetails";
- 
+import NetworkErrorPage from "../Pages/NetworkError/NetworkErro";
+import Sign_up from "../Pages/Auth/Sign-up/Sign-up";
+import Sign_in from "../Pages/Auth/sign-in/Sign-in";
+
 export const routes = createBrowserRouter([
   {
     path: "/",
@@ -33,14 +34,14 @@ export const routes = createBrowserRouter([
           try {
             response1 = await axios.get("http://localhost:9000/jobs");
           } catch (error) {
-            console.log(error);
+            <NetworkErrorPage />;
           }
           return response1?.data;
         },
       },
       {
         path: "/jobs/:id",
-        element: <JobDetails/>,
+        element: <JobDetails />,
         loader: async ({ params }) => {
           let response;
           try {
@@ -48,7 +49,7 @@ export const routes = createBrowserRouter([
               `http://localhost:9000/jobs/${params.id}`
             );
           } catch (error) {
-            console.log(error);
+            <NetworkErrorPage />;
           }
           return response?.data;
         },
@@ -65,18 +66,23 @@ export const routes = createBrowserRouter([
         path: "favourite",
         element: <Favourite />,
         loader: async () => {
-          let response = await axios.get("http://localhost:9000/jobs");
-          return response.data;
+          let response;
+          try {
+            response = await axios.get("http://localhost:9000/jobs");
+          } catch (error) {
+            <NetworkErrorPage />;
+          }
+          return response?.data;
         },
       },
 
       {
-        path: "sign",
-        element: <Sign />,
+        path: "sign_up",
+        element: <Sign_up />,
       },
       {
-        path: "signin",
-        element: <Signin />,
+        path: "sign_in",
+        element: <Sign_in/>,
       },
     ],
   },

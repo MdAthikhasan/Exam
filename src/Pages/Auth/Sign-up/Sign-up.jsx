@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./sign.css";
+ import "./sign-up.css"
 import { Link, useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 import {
@@ -11,7 +11,7 @@ import { toast } from "react-toastify";
 import { AiFillCalculator } from "react-icons/ai";
 import Swal from "sweetalert2";
 
-const Sign = () => {
+const Sign_up = () => {
   const [createUserWithEmailAndPassword, euser, eloading, eerror] =
     useCreateUserWithEmailAndPassword(firebaseAuth);
   const [signInWithGoogle, guser, gloading, gerror] =
@@ -72,7 +72,7 @@ const Sign = () => {
   return (
     <div className="form">
       <h4>
-        Already have an account? <Link to={"/signin"}> Sign-In</Link>
+        Already have an account? <Link to={"/sign_in"}> Sign-In</Link>
       </h4>
       <form onSubmit={handleSubmit}>
         <fieldset style={{ padding: "15px" }}>
@@ -137,4 +137,4 @@ const Sign = () => {
   );
 };
 
-export default Sign;
+export default Sign_up;

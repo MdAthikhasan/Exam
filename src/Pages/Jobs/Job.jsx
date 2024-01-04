@@ -33,7 +33,7 @@ const Job = ({ jobdata, func }) => {
     console.log(error);
   }
   if (!user) {
-         return  <Navigate to={"/sign"} />;
+         return  <Navigate to={"/sign_up"} />;
   } 
   const handeleFavourite = (obj) => {
     const status = obj?.isFavourite == "undefined" ? false : !obj.isFavourite;
