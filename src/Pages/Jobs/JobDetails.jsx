@@ -28,13 +28,12 @@ const JobDetails = () => {
           src={data?.logo}
           alt=""
         />
-        <p>
-          <h3>{data.website}</h3>
-          <h3 style={{ color: "green" }}>{data?.companyName}</h3>
-          <p style={{ display: "flex", alignItems: "center" }}>
-            <IoLocationSharp className="icon" />
-            {data?.location}
-          </p>
+
+        <h3>{data.website}</h3>
+        <h3 style={{ color: "green" }}>{data?.companyName}</h3>
+        <p style={{ display: "flex", alignItems: "center" }}>
+          <IoLocationSharp className="icon" />
+          {data?.location}
         </p>
       </p>
       <br />
@@ -56,7 +55,8 @@ const JobDetails = () => {
       </p>
       <div className="jobrequirment">
         <br></br>
-        <h3>Education and Qualifications:</h3><br />
+        <h3>Education and Qualifications:</h3>
+        <br />
         <p>
           Bachelor's degree in Computer Science, Information Technology, or a
           related field. Relevant certifications (e.g., Web Developer
@@ -64,7 +64,8 @@ const JobDetails = () => {
           Programming Languages:
         </p>{" "}
         <br />
-        <h3>Programming Languages:</h3><br />
+        <h3>Programming Languages:</h3>
+        <br />
         <p>
           Proficiency in core web development languages such as HTML, CSS, and
           JavaScript. Knowledge of server-side programming languages like PHP,
@@ -72,7 +73,8 @@ const JobDetails = () => {
           SQL. Web Technologies:
         </p>
         <br />
-        <h3> Web Technologies:</h3><br />
+        <h3> Web Technologies:</h3>
+        <br />
         <p>
           Experience with web development frameworks (e.g., React, Angular,
           Vue.js for front-end; Django, Flask, Laravel for back-end).
@@ -100,8 +102,6 @@ const JobDetails = () => {
 };
 
 export default JobDetails;
-
-
 
 /**
  * 

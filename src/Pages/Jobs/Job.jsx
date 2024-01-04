@@ -24,19 +24,17 @@ import firebaseAuth from "../../Firebase/firebase";
 
 const Job = ({ jobdata, func }) => {
   const { title, logo, id, companyName, location, isFavourite } = jobdata;
-const [user, authLoading, error] = useAuthState(firebaseAuth);
+  const [user, authLoading, error] = useAuthState(firebaseAuth);
   const { setEdit, isEdit, setIsEdit } = useContext(MyContext);
- if (authLoading) {
-   return <Loading />;
- }
- if (error) {
-   console.log(error);
- }
- if (!user) {
-   <Navigate to={"/sign"} />;
- } else {
-   console.log("user ase");
- }
+  if (authLoading) {
+    return <Loading />;
+  }
+  if (error) {
+    console.log(error);
+  }
+  if (!user) {
+         return  <Navigate to={"/sign"} />;
+  } 
   const handeleFavourite = (obj) => {
     const status = obj?.isFavourite == "undefined" ? false : !obj.isFavourite;
     let setobj = {
@@ -150,11 +148,23 @@ const [user, authLoading, error] = useAuthState(firebaseAuth);
         </div>
         <div className="social-icons">
           <p>
-            <AiFillTwitterCircle className="icon2" />
-            <CiLinkedin className="icon2" />
-            <FaFacebook className="icon2" />
-            <AiFillGoogleCircle className="icon2" />
-            <AiFillAndroid className="icon2" />
+            <AiFillTwitterCircle
+              onClick={() => window.open("https://twitter.com")}
+              className="icon2"
+            />
+            <CiLinkedin
+              onClick={() => window.open("https://www.linkedin.com")}
+              className="icon2"
+            />
+            <FaFacebook
+              onClick={() => window.open("https://facebook.com")}
+              className="icon2"
+            />
+            <AiFillGoogleCircle
+              onClick={() => window.open("https://google.com")}
+              className="icon2"
+            />
+          
           </p>
           <p>
             <MdOutlineFavorite

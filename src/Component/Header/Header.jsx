@@ -92,22 +92,26 @@ const Header = () => {
                 )}
               </li>
             </abbr>
-            {
-              user ? (
-                <abbr title="sign out">
-                  <li onClick={() => signOut()} className="ulsignin">
-                    <Link>Sign Out</Link>
-                  </li>
-                </abbr>
-              ) : (
-                <abbr title="Login">
-                  <li className="ulsignin">
-                    <Link to={"/sign"}>Sign In</Link>
-                  </li>
-                </abbr>
-              )
-              
-            }
+            {user ? (
+              <abbr title="sign out">
+                <li
+                  style={{ fontWeight: "bold",cursor:'pointer' }}
+                  onClick={() => signOut()}
+                  className="ulsignin"
+                >
+                  {/* <Link>Sign Out</Link> */}
+                  Sign Out
+                </li>
+              </abbr>
+            ) : (
+              <abbr title="Login">
+                <li className="ulsignin">
+                  <Link style={{ fontWeight: "bold" }} to={"/sign"}>
+                    Sign In
+                  </Link>
+                </li>
+              </abbr>
+            )}
           </ul>
         </div>
       </div>

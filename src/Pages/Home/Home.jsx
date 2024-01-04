@@ -36,7 +36,7 @@ const Home = () => {
             </Link>
             <Link>
               <button onClick={() => setIsTrue(true)} className="btn">
-                Haier Now
+                Post job
               </button>
             </Link>
           </div>

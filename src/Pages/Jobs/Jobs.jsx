@@ -35,9 +35,7 @@ const Jobs = () => {
   }
   if (!user) {
    return  <Navigate to={"/sign"} state={{ from: location }} replace />;
-  } else {
-    console.log("user ase");
-  }
+  }  
 
   useEffect(() => {
     setServerData((prevData) => {
