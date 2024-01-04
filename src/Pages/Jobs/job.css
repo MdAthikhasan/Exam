@@ -6,6 +6,8 @@
      display: grid;
      grid-template-columns: repeat(3,1fr);
      gap:12px;
+     /* height: 60vh; */
+     margin-top: 80px;
 }
  .icons p{
     color: black;

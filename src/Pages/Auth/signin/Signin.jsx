@@ -84,7 +84,8 @@ const Signin = () => {
             />
           </label>
           <br />
-
+          <Link >Forget password ?</Link>
+          <br />
           <button className="button" type="submit">
             Sign-in
           </button>

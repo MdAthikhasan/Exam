@@ -10,6 +10,7 @@
   align-items: center;
   justify-content: space-between;
   background-color: aliceblue;
+  z-index: -1;   
 
 }
 .navlogo{
@@ -21,13 +22,16 @@
 }
 .nabvar{
   box-shadow: 2px 2px 2px 2px rgb(244, 240, 240);
-  /* width: 100%; */
+  width: 100%;
+  position: fixed;
+  top: 0;
+  z-index: 999;
 }
 .nabvar li ,.alignjustify {
   padding: 10px;
 
 }
-.ul  li:hover{
+.ul li:hover{
   background-color: rgb(161, 157, 157);
   border-radius: 6px;
   padding: 10px  ;

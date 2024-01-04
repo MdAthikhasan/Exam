@@ -46,7 +46,7 @@ const Jobs = () => {
     });
   }, [searchVale]);
   return (
-    <div className="jobs">
+    <div  className="jobs">
       {serverData?.length > 0 &&
         serverData.map((jobdata) => (
           <Job key={jobdata?.id} func={func} jobdata={jobdata} />

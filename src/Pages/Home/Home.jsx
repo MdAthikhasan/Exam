@@ -8,7 +8,7 @@ import JobForm from "../../Component/Apply/JobForm";
 import Loading from "../../Component/Loading/Loading";
 import { MyContext } from "../../Context/Context";
 const Home = () => {
-  const {isTrue ,setIsTrue} = useContext(MyContext)
+  const { isTrue, setIsTrue } = useContext(MyContext);
   const [user, authLoading] = useAuthState(firebaseAuth);
 
   // const navigate = useNavigate();
@@ -16,19 +16,15 @@ const Home = () => {
   if (authLoading) {
     return <Loading />;
   }
-  // if (!user) {
-  //   navigate("/sign");
-  //   return null
-  // }
-
+ 
   return (
     <div>
       <div className={!isTrue ? "home" : "home_overlay"}>
         <div className="left-side">
           <h1 className="title">
             Build your careear in{" "}
-            <span className="text">Halal Path, God will help you</span> <br/> in your
-            job journey
+            <span className="text">Halal Path, God will help you</span> <br />{" "}
+            in your job journey
           </h1>
           <div style={{ display: "flex", alignItems: "center" }}>
             <Link to={!user ? "/sign" : "/jobs"}>
