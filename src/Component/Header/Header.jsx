@@ -9,12 +9,21 @@ import firebaseAuth from "./../../Firebase/firebase";
 import { useSignOut } from "react-firebase-hooks/auth";
 // import Swal from "sweetalert2";
 import { MyContext } from "../../Context/Context";
+import Loading from "../Loading/Loading";
+import NetworkErrorPage from "../../Pages/NetworkError/NetworkErro";
 const Header = () => {
   const [user, loading, error] = useAuthState(firebaseAuth);
   const [isTrue, setIsTrue] = useState(false);
   const [signOut] = useSignOut(firebaseAuth);
   const { setSearchVale, searchVale } = useContext(MyContext);
- 
+
+  if (loading) {
+    return <Loading />;
+  }
+  if (error) {
+    return <NetworkErrorPage />;
+  }
+
   return (
     <nav>
       <div className="nabvar flex">
@@ -43,7 +52,6 @@ const Header = () => {
         </div>
 
         <div>
-         
           <ul className={!isTrue ? "flex" : "ul"}>
             <abbr title="Home">
               <li>
@@ -95,12 +103,11 @@ const Header = () => {
             {user ? (
               <abbr title="sign out">
                 <li
-                  style={{ fontWeight: "bold",cursor:'pointer' }}
+                  style={{ fontWeight: "bold", cursor: "pointer" }}
                   onClick={() => signOut()}
                   className="ulsignin"
                 >
                   <Link>Sign Out</Link>
-                   
                 </li>
               </abbr>
             ) : (

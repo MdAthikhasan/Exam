@@ -4,6 +4,7 @@ import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
 import firebaseAuth from "../../../Firebase/firebase";
 import Swal from "sweetalert2";
 import Loading from "./../../../Component/Loading/Loading";
+import NetworkErrorPage from "../../NetworkError/NetworkErro";
 const Sign_in = () => {
   const navigate = useNavigate();
   const [loginData, setLoginData] = useState({
@@ -19,11 +20,7 @@ const Sign_in = () => {
     return <Loading />;
   }
   if (error) {
-    return Swal.fire({
-      title: `Invalid Email or  Password`,
-      text: "",
-      icon: "warning",
-    });
+    return <NetworkErrorPage/>
   }
   if (user) {
     Swal.fire({

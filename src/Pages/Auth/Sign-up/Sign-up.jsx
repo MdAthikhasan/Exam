@@ -10,6 +10,7 @@ import firebaseAuth from "../../../Firebase/firebase";
 import { AiFillCalculator } from "react-icons/ai";
 import Swal from "sweetalert2";
 import Loading from "../../../Component/Loading/Loading";
+import NetworkErrorPage from "../../NetworkError/NetworkErro";
 
 const Sign_up = () => {
   const [createUserWithEmailAndPassword, euser, eloading, eerror] =
@@ -28,11 +29,7 @@ const [formData, setFormData] = useState({
     return <Loading/>
   } 
   if (gerror || eerror) {
-     Swal.fire({
-       title: "Error occured!",
-       text: "",
-       icon: "",
-     });
+     return <NetworkErrorPage/>
   }
   if (guser || euser) {
     Swal.fire({

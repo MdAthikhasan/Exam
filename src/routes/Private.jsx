@@ -4,6 +4,7 @@ import { Navigate } from "react-router-dom";
 import firebaseAuth from "../Firebase/firebase";
 import Loading from "../Component/Loading/Loading";
 import Swal from "sweetalert2";
+import NetworkErrorPage from "../Pages/NetworkError/NetworkErro";
 
 const Private = ({ children }) => {
   const [user, authLoading,error] = useAuthState(firebaseAuth);
@@ -11,10 +12,7 @@ const Private = ({ children }) => {
     return <Loading />;
   }
   if (error) {
-       Swal.fire({
-         title: "Error occured!",
-         icon: "warning",
-       });
+      return <NetworkErrorPage/>
   }
   if (!user) {
     Swal.fire({

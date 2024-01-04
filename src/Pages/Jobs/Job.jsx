@@ -21,6 +21,7 @@ import Swal from "sweetalert2";
 import Loading from "../../Component/Loading/Loading";
 import { useAuthState } from "react-firebase-hooks/auth";
 import firebaseAuth from "../../Firebase/firebase";
+import NetworkErrorPage from "../NetworkError/NetworkErro";
 
 const Job = ({ jobdata, func }) => {
   const { title, logo, id, companyName, location, isFavourite } = jobdata;
@@ -30,10 +31,7 @@ const Job = ({ jobdata, func }) => {
     return <Loading />;
   }
   if (error) {
-        Swal.fire({
-          title: "Error occured!",
-          icon: "error",
-        });
+      return  <NetworkErrorPage/>
   }
   if (!user) {
   return  <Navigate to={"/sign_up"} />;

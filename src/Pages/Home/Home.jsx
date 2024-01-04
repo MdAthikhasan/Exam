@@ -8,12 +8,17 @@ import JobForm from "../../Component/Apply/JobForm";
 import Loading from "../../Component/Loading/Loading";
 import { MyContext } from "../../Context/Context";
 import Swal from "sweetalert2";
+import NetworkErrorPage from "../NetworkError/NetworkErro";
 const Home = () => {
   const { isTrue, setIsTrue } = useContext(MyContext);
-  const [user, authLoading] = useAuthState(firebaseAuth);
+  const [user, authLoading,error] = useAuthState(firebaseAuth);
 
   if (authLoading) {
     return <Loading />;
+  }
+
+  if (error) {
+    return <NetworkErrorPage/>
   }
 
   return (

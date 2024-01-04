@@ -8,6 +8,7 @@ import firebaseAuth from "../../Firebase/firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 import Loading from "../../Component/Loading/Loading";
 import Swal from "sweetalert2";
+import NetworkErrorPage from "../NetworkError/NetworkErro";
 
 const Jobs = () => {
   const { searchVale } = useContext(MyContext);
@@ -32,10 +33,7 @@ const Jobs = () => {
     return  <Loading />;
   }
   if (error) {
-   return  Swal.fire({
-      title: 'Error occured!',
-      icon:'error'
-    })
+   return  <NetworkErrorPage/>
   }
   if (!user) {
    return  <Navigate to={"/sign_up"} state={{ from: location }} replace />;
