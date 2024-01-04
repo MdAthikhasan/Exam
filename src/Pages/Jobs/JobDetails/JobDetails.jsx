@@ -1,9 +1,8 @@
 import React from "react";
-  import "./jobdecard.css"
+import "./jobdecard.css";
 import { useLoaderData } from "react-router-dom";
 import { IoLocationSharp } from "react-icons/io5";
 import { AiFillTwitterCircle } from "react-icons/ai";
- 
 import { CiLinkedin } from "react-icons/ci";
 import { FaFacebook } from "react-icons/fa";
 import { AiFillGoogleCircle } from "react-icons/ai";
