@@ -1,0 +1,116 @@
+ {
+  "jobs": [
+    {
+      "id": 1,
+      "title": "Google Internship Program",
+      "logo": "https://shorturl.at/iwyR7",
+      "companyName": "Google",
+      "position": "Intern Developer",
+      "location": "Dhaka",
+      "description": "Established in 2000, Bdjobs.com Limited has been operating the largest online employment exchange of Bangladesh for the last 22 years. www.bdjobs.com is one of the most visited web sites in the country. It is also among the top five (5) most visited job portals in South Asia. Currently the company offers the following position for immediate recruitment.",
+      "isFavourite": false
+    },
+    {
+      "id": 2,
+      "title": "Facebook Internship Program",
+      "logo": "https://www.facebook.com/images/fb_icon_325x325.png",
+      "companyName": "Facebook",
+      "position": "Intern Developer",
+      "location": "America",
+      "description": "Established in 2000, Bdjobs.com Limited has been operating the largest online employment exchange of Bangladesh for the last 22 years. www.bdjobs.com is one of the most visited web sites in the country. It is also among the top five (5) most visited job portals in South Asia. Currently the company offers the following position for immediate recruitment.",
+       "isFavourite": false
+      
+    },
+    {
+      "id": 3,
+      "title": "Microsoft Senior Development ",
+      "logo": "https://t.ly/7S7Om",
+      "companyName": "Microsoft",
+      "position": "Senior Developer",
+      "location": "America",
+      "description": "Established in 2000, Bdjobs.com Limited has been operating the largest online employment exchange of Bangladesh for the last 22 years. www.bdjobs.com is one of the most visited web sites in the country. It is also among the top five (5) most visited job portals in South Asia. Currently the company offers the following position for immediate recruitment.",
+      "website": "www.bluestacks.com ",
+       "isFavourite": false
+
+    },
+    {
+      "id": 4,
+      "title": "Twitter Internship Program",
+      "logo": "https://static.dezeen.com/uploads/2023/07/x-logo-twitter-elon-musk_dezeen_2364_col_0-1.jpg",
+      "companyName": "Twiiter",
+      "position": "Intern Developer",
+      "location": "Soudi Arabba",
+      "description": "Established in 2000, Bdjobs.com Limited has been operating the largest online employment exchange of Bangladesh for the last 22 years. www.bdjobs.com is one of the most visited web sites in the country. It is also among the top five (5) most visited job portals in South Asia. Currently the company offers the following position for immediate recruitment.",
+      "website": "www.bluestacks.com ",
+      "isFavorite": false
+    },
+    {
+      "id": 5,
+      "title": "Tesla Software Engineer",
+      "logo": "https://cloudfront-us-east-2.images.arcpublishing.com/reuters/M3AGBXFXZJN4XBRAGW5B64T6KI.jpg",
+      "companyName": "Tesla",
+      "position": "Software Engineer",
+      "location": "Flesteen",
+      "description": "Established in 2000, Bdjobs.com Limited has been operating the largest online employment exchange of Bangladesh for the last 22 years. www.bdjobs.com is one of the most visited web sites in the country. It is also among the top five (5) most visited job portals in South Asia. Currently the company offers the following position for immediate recruitmentEstablished in 2000, Bdjobs.com Limited has been operating the largest online employment exchange of Bangladesh for the last 22 years. www.bdjobs.com is one of the most visited web sites in the country. It is also among the top five (5) most visited job portals in South Asia. Currently the company offers the following position for immediate recruitment.",
+      "website": "www.bluestacks.com ",
+      "isFavorite": false
+      
+    },
+    {
+      "id": 6,
+      "title": "Starlink UX Designer",
+      "logo": "https://i.iranintl.com/images/rdk9umy0/production/09ba0c11b7dbfec050fc8b9ee2d0183ef76fd4d1-1920x1080.jpg",
+      "companyName": "Starlink",
+      "position": "UX Designer",
+      "location": "Chandpur",
+      "description": "Established in 2000, Bdjobs.com Limited has been operating the largest online employment exchange of Bangladesh for the last 22 years. www.bdjobs.com is one of the most visited web sites in the country. It is also among the top five (5) most visited job portals in South Asia. Currently the company offers the following position for immediate recruitmentEstablished in 2000, Bdjobs.com Limited has been operating the largest online employment exchange of Bangladesh for the last 22 years. www.bdjobs.com is one of the most visited web sites in the country. It is also among the top five (5) most visited job portals in South Asia. Currently the company offers the following position for immediate recruitment.",
+      "website": " https://bluestacks.com",
+      "isFavourite": false
+    },
+      {
+      "id": 7,
+      "title": "Amazon Data Scientist",
+      "logo": "https://entrackr.com/storage/2022/10/Spacex.jpg",
+      "companyName": "spaceX",
+      "position": "Data Scientist",
+      "location": "Badda",
+      "description": "Established in 2000, Bdjobs.com Limited has been operating the largest online employment exchange of Bangladesh for the last 22 years. www.bdjobs.com is one of the most visited web sites in the country. It is also among the top five (5) most visited job portals in South Asia. Currently the company offers the following position for immediate recruitmentEstablished in 2000, Bdjobs.com Limited has been operating the largest online employment exchange of Bangladesh for the last 22 years. www.bdjobs.com is one of the most visited web sites in the country. It is also among the top five (5) most visited job portals in South Asia. Currently the company offers the following position for immediate recruitment.",
+      "website": "www.bluestacks.com ",
+       "isFavourite": false
+    },
+    {
+      "id": 8,
+      "title": " Daraz Marketing Specialist",
+      "logo": "https://idlc.com/mbr/images/public/LRkfCP0813FHq8MZWgc8yT.PNG",
+      "companyName": "Daraz",
+      "position": "Marketing Specialist",
+      "location": "Bangladesh",
+      "description": "Established in 2000, Bdjobs.com Limited has been operating the largest online employment exchange of Bangladesh for the last 22 years. www.bdjobs.com is one of the most visited web sites in the country. It is also among the top five (5) most visited job portals in South Asia. Currently the company offers the following position for immediate recruitmentEstablished in 2000, Bdjobs.com Limited has been operating the largest online employment exchange of Bangladesh for the last 22 years. www.bdjobs.com is one of the most visited web sites in the country. It is also among the top five (5) most visited job portals in South Asia. Currently the company offers the following position for immediate recruitment.",
+      "website": "www.bluestacks.com ",
+       "isFavourite": false
+    },
+     {
+      "id": 9,
+      "title": "Facebook Marketing Specialist",
+      "logo": "https://t.ly/CAwPv",
+      "companyName": "Amazon",
+      "position": "Marketing Specialist",
+      "location": "Dhaka",
+      "description": "Established in 2000, Bdjobs.com Limited has been operating the largest online employment exchange of Bangladesh for the last 22 years. www.bdjobs.com is one of the most visited web sites in the country. It is also among the top five (5) most visited job portals in South Asia. Currently the company offers the following position for immediate recruitmentEstablished in 2000, Bdjobs.com Limited has been operating the largest online employment exchange of Bangladesh for the last 22 years. www.bdjobs.com is one of the most visited web sites in the country. It is also among the top five (5) most visited job portals in South Asia. Currently the company offers the following position for immediate recruitment.",
+      "website": "www.bluestacks.com ",
+       "isFavourite": false
+    },
+    {
+      "id": 10,
+      "title": " Apple Marketing Specialist",
+      "logo": "https://t.ly/obBIz",
+      "companyName": "Apple",
+      "position": "Marketing Specialist",
+      "location": "London",
+      "description": "Established in 2000, Bdjobs.com Limited has been operating the largest online employment exchange of Bangladesh for the last 22 years. www.bdjobs.com is one of the most visited web sites in the country. It is also among the top five (5) most visited job portals in South Asia. Currently the company offers the following position for immediate recruitmentEstablished in 2000, Bdjobs.com Limited has been operating the largest online employment exchange of Bangladesh for the last 22 years. www.bdjobs.com is one of the most visited web sites in the country. It is also among the top five (5) most visited job portals in South Asia. Currently the company offers the following position for immediate recruitment.",
+      "website": "www.bluestacks.com ",
+       "isFavourite": false
+    }
+    
+  ]
+}
