@@ -33,17 +33,16 @@ const Job = ({ jobdata, func }) => {
     try {
       axios.put(`http://localhost:9000/jobs/${obj.id}`, setobj);
       if (!obj.isFavourite) {
-           Swal.fire({
-             title: "Added to favourite!",
-             icon: "success",
-           });
+        Swal.fire({
+          title: "Added to favourite!",
+          icon: "success",
+        });
       } else {
-         Swal.fire({
-           title: "Removed from favourite!",
-           icon: "warning",
-         });
+        Swal.fire({
+          title: "Removed from favourite!",
+          icon: "warning",
+        });
       }
-    
     } catch (error) {
       console.log("favourite", error);
     }
@@ -72,8 +71,21 @@ const Job = ({ jobdata, func }) => {
     try {
       await axios.delete(`http://localhost:9000/jobs/${id}`);
       Swal.fire({
-        title: " Item Rimoved from !",
-        icon: "success",
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          Swal.fire({
+            title: "Deleted!",
+            text: "Your file has been deleted.",
+            icon: "success",
+          });
+        }
       });
     } catch (error) {
       console.error("Error deleting job:", error.message);
@@ -86,8 +98,8 @@ const Job = ({ jobdata, func }) => {
     }
   };
   return (
-    <>
-      <div className="jobcard">
+    <div>
+      <div className={!isEdit ? "jobcard" : "blur"}>
         <Link style={{ background: "none" }} to={`/jobs/${id}`}>
           <div>
             <p className="borderbtm">
@@ -152,9 +164,9 @@ const Job = ({ jobdata, func }) => {
             />
           </p>
         </div>
-        {isEdit && <EditForm />}
       </div>
-    </>
+      {isEdit && <EditForm />}
+    </div>
   );
 };
 

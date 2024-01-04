@@ -6,7 +6,7 @@ const Context = ({ children }) => {
   const [searchVale, setSearchVale] = useState("");
   const [Edit, setEdit] = useState();
   const [isEdit, setIsEdit] = useState(false);
-  
+  const [isTrue, setIsTrue] = useState(false);
   // const handleFavourite = (serverId) => {
   //   setId([...id, serverId]);
   // };
@@ -20,6 +20,8 @@ const Context = ({ children }) => {
     searchVale,
     id,
     setId,
+    isTrue,
+    setIsTrue,
   };
   // console.log(data)
   return <MyContext.Provider value={obj}>{children}</MyContext.Provider>;

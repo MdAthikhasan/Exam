@@ -16,11 +16,19 @@
     background-color: rgb(246, 243, 239);
     box-shadow: 2px 2px 2px 2px rgb(185, 184, 184);
     padding: 12px;
-    /* display: flex;
-    align-items: center; */
+  height: auto;
     cursor: pointer;
     border-radius: 6px;
     
+}
+.blur{
+    filter: blur(7px);
+    background-color: rgb(246, 243, 239);
+        box-shadow: 2px 1px 1px 2px rgb(185, 184, 184);
+        padding: 12px;
+        height: auto;
+        cursor: pointer;
+        border-radius: 6px;
 }
 /* .jobcard:hover{
     transform: scale(0.5);

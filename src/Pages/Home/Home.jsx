@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import Images from "./Images/jobs.jpg";
 import "./home.css";
 import { Link, useNavigate } from "react-router-dom";
@@ -6,8 +6,9 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import firebaseAuth from "../../Firebase/firebase";
 import JobForm from "../../Component/Apply/JobForm";
 import Loading from "../../Component/Loading/Loading";
+import { MyContext } from "../../Context/Context";
 const Home = () => {
-  const [isTrue, setIsTrue] = useState(false);
+  const {isTrue ,setIsTrue} = useContext(MyContext)
   const [user, authLoading] = useAuthState(firebaseAuth);
 
   // const navigate = useNavigate();
@@ -22,7 +23,7 @@ const Home = () => {
 
   return (
     <div>
-      <div className={!isTrue ? "home" : "home overlay"}>
+      <div className={!isTrue ? "home" : "home_overlay"}>
         <div className="left-side">
           <h1 className="title">
             Build your careear in{" "}
@@ -36,19 +37,15 @@ const Home = () => {
               <button className="btn">Explore now</button>
             </Link>
             <Link>
-              <button onClick={() => setIsTrue(!isTrue)} className="btn">
-                {!isTrue ? "Haier Now" : "Go back"}
+              <button onClick={() => setIsTrue(true)} className="btn">
+              Haier Now
               </button>
             </Link>
           </div>
         </div>
         <img className="home-image" src={Images} alt="" />
-        {isTrue ? (
-          <div>
-            <JobForm />
-          </div>
-        ) : null}
       </div>
+      {isTrue && <JobForm />}
     </div>
   );
 };

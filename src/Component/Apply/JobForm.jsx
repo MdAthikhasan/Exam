@@ -1,10 +1,13 @@
 // src/components/JobForm.js
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 // import "./jobForm.css";
 import './jobForm.css'
 import axios from "axios";
 import Swal from "sweetalert2";
+import { RiDeleteBack2Line } from "react-icons/ri";
+import { MyContext } from "../../Context/Context";
 const JobForm = () => {
+  const {isTrue ,setIsTrue} = useContext(MyContext)
   const [formData, setFormData] = useState({
     title: "",
     logo: "",
@@ -47,7 +50,10 @@ const JobForm = () => {
   };
   return (
     <div className="jobform">
-      <h2>Job Application Form</h2>
+      <h2 className="formheading">
+        Job Application Form{" "}
+        <RiDeleteBack2Line onClick={()=>setIsTrue(false)} className="deleticon" />
+      </h2>
       <form onSubmit={handleSubmit}>
         <label>
           <input

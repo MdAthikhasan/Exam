@@ -13,7 +13,9 @@ import { MdOutlineFavorite } from "react-icons/md";
 import { TiDeleteOutline } from "react-icons/ti";
 import { FaEdit } from "react-icons/fa";
 import "../Jobs/job.css";
-import './favourite.css'
+import "./favourite.css";
+import Swal from "sweetalert2";
+import axios from "axios";
 const Favourite = () => {
   // const { id } = useContext(MyContext);
   const [serverDatas, setServerData] = useState(useLoaderData());
@@ -23,27 +25,35 @@ const Favourite = () => {
   useEffect(() => {
     setServerData(serverDatas);
   }, [serverDatas]);
-  // useEffect(() => {
-  //   const filtered = serverDatas?.filter((serverData) =>
-  //     id?.includes(serverData.id)
-  //   );
-  //   setFilteredData(filtered);
-  // }, [id]);
+  const favDeletHandle = async (id) => {
+    console.log(id);
+    try {
+      await axios.delete(`http://localhost:9000/jobs/${id}`);
+      Swal.fire({
+        title: "Deleted from favorite!",
+        icon: "warning",
+      });
+    } catch (error) {
+      Swal.fire({
+        title: "Something is wrong!",
+        icon: "warning",
+      });
+    }
+  };
 
   return (
     <div
       style={{
         display: "grid",
-        gridTemplateColumns:"repeat(3,1fr)",
+        gridTemplateColumns: "repeat(3,1fr)",
         gap: "10px",
       }}
     >
-      {serverDatas.length > 0 &&
+      {serverDatas.length > 0 ? (
         serverDatas.map((mapvalue) => {
           return (
             mapvalue.isFavourite == true && (
               <div key={mapvalue?.id} className="jobcard">
-               
                 <div>
                   <p className="borderbtm">
                     we are looking for
@@ -63,7 +73,7 @@ const Favourite = () => {
                   <h2>{mapvalue?.title}</h2> <br />
                   <h3 style={{ color: "blue" }}>{mapvalue?.companyName}</h3>
                 </div>
-                
+
                 <div className="icons">
                   <p>
                     <CiTrophy className="icon1" />
@@ -87,7 +97,10 @@ const Favourite = () => {
                     <AiFillAndroid className="icon2" />
                   </p>
                   <p>
-                    <MdOutlineFavorite  className="icon2" />
+                    <MdOutlineFavorite
+                      onClick={() => favDeletHandle(mapvalue.id)}
+                      className="icon3"
+                    />
                     <TiDeleteOutline className="icon2" />
                     <FaEdit className="icon2" />
                   </p>
@@ -95,7 +108,10 @@ const Favourite = () => {
               </div>
             )
           );
-        })}
+        })
+      ) : (
+        <h1>No Favourite added</h1>
+      )}
     </div>
   );
 };

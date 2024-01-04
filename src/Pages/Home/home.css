@@ -16,9 +16,17 @@
   justify-content: space-between;
   align-items: center;
   position: relative;
+  
  
 }
- 
+ .home_overlay{
+filter: blur(6px);
+display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+ }
 .title::first-line{
  font-size: 60px;
  font-weight: 700;

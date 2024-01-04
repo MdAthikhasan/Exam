@@ -14,7 +14,12 @@
     padding: 10px;
     
 }
-.jobrequirment{
-    /* border-bottom: 1px solid black;
-    margin-top: 10px;
-} */
+ .apply{
+    background-color:blue;
+    outline: none;
+    padding: 5px 30px ;
+    border-radius: 6px;
+    cursor: pointer;
+    color: white;
+    border: none;
+ }

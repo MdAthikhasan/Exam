@@ -43,11 +43,42 @@ const JobDetails = () => {
       </h1>{" "}
       <br />
       {/* <h2>{data?.title}</h2> <br /> */}
-      <p style={{ lineHeight: "25px", fontSize: "18px", fontWeight: "400",borderBottom:'1px solid black',paddingBottom:"20px" }}>
+      <p
+        style={{
+          lineHeight: "25px",
+          fontSize: "18px",
+          fontWeight: "400",
+          borderBottom: "1px solid black",
+          paddingBottom: "20px",
+        }}
+      >
         {data?.description}
       </p>
-          <div className="jobrequirment">
-             h
+      <div className="jobrequirment">
+        <br></br>
+        <h3>Education and Qualifications:</h3><br />
+        <p>
+          Bachelor's degree in Computer Science, Information Technology, or a
+          related field. Relevant certifications (e.g., Web Developer
+          Certification, Front-End/Back-End Development Certification).
+          Programming Languages:
+        </p>{" "}
+        <br />
+        <h3>Programming Languages:</h3><br />
+        <p>
+          Proficiency in core web development languages such as HTML, CSS, and
+          JavaScript. Knowledge of server-side programming languages like PHP,
+          Python, Ruby, or Node.js. Familiarity with database languages like
+          SQL. Web Technologies:
+        </p>
+        <br />
+        <h3> Web Technologies:</h3><br />
+        <p>
+          Experience with web development frameworks (e.g., React, Angular,
+          Vue.js for front-end; Django, Flask, Laravel for back-end).
+          Understanding of RESTful APIs and web services. Version Control/Git:
+        </p>
+        <br />
       </div>
       <div className="social-icons">
         <p>
@@ -57,6 +88,7 @@ const JobDetails = () => {
           <AiFillGoogleCircle className="icon2" />
           <AiFillAndroid className="icon2" />
         </p>
+        <button className="apply">Apply now</button>
         <p>
           <MdOutlineFavorite className="icon2" />
           <TiDeleteOutline className="icon2" />
@@ -68,3 +100,64 @@ const JobDetails = () => {
 };
 
 export default JobDetails;
+
+
+
+/**
+ * 
+ * Education and Qualifications:
+
+Bachelor's degree in Computer Science, Information Technology, or a related field.
+Relevant certifications (e.g., Web Developer Certification, Front-End/Back-End Development Certification).
+Programming Languages:
+
+Proficiency in core web development languages such as HTML, CSS, and JavaScript.
+Knowledge of server-side programming languages like PHP, Python, Ruby, or Node.js.
+Familiarity with database languages like SQL.
+Web Technologies:
+
+Experience with web development frameworks (e.g., React, Angular, Vue.js for front-end; Django, Flask, Laravel for back-end).
+Understanding of RESTful APIs and web services.
+Version Control/Git:
+
+Proficient in using version control systems, particularly Git.
+Responsive Design:
+
+Knowledge of responsive web design principles.
+Experience with CSS frameworks like Bootstrap or Tailwind CSS.
+Cross-Browser Compatibility:
+
+Ability to ensure compatibility and consistent rendering across various browsers.
+Web Performance Optimization:
+
+Understanding of techniques to optimize web page loading and rendering times.
+Testing and Debugging:
+
+Familiarity with testing frameworks (e.g., Jest, Mocha) and debugging tools.
+Knowledge of unit testing and integration testing.
+Security Best Practices:
+
+Awareness of web security best practices and common vulnerabilities.
+Implementation of secure coding techniques.
+Build Tools and Package Managers:
+
+Experience with build tools like Webpack and task runners like Gulp.
+Proficiency in using package managers such as npm or yarn.
+Databases:
+
+Knowledge of database management systems (e.g., MySQL, PostgreSQL, MongoDB).
+Ability to design and optimize database schemas.
+Web Servers:
+
+Experience with configuring and managing web servers (e.g., Apache, Nginx).
+Communication and Collaboration:
+
+Strong communication skills, as web developers often work closely with other team members, including designers and project managers.
+Ability to collaborate using version control systems and collaboration tools.
+Problem-Solving Skills:
+
+Strong analytical and problem-solving skills to troubleshoot and debug issues effectively.
+Continuous Learning:
+
+Demonstrated commitment to staying updated on the latest web development trends and technologies.
+ */

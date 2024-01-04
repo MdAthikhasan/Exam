@@ -51,7 +51,9 @@ export const routes = createBrowserRouter([
             response = await axios.get(
               `http://localhost:9000/jobs/${params.id}`
             );
-          } catch (error) {}
+          } catch (error) {
+            console.log(error)
+          }
           return response?.data;
         },
       },

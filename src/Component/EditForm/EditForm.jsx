@@ -5,6 +5,7 @@ import "../Apply/jobForm.css";
 import { MyContext } from "../../Context/Context";
 import axios from "axios";
 import { toast } from "react-toastify";
+import { RiDeleteBack2Line } from "react-icons/ri";
 // import axios from "axios";
 const EditForm = () => {
   const { Edit, setIsEdit } = useContext(MyContext);
@@ -13,7 +14,7 @@ const EditForm = () => {
 
   const { title, logo, companyName, position, location, description, id } =
     newInput;
- 
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     // console.log(e.target.value);
@@ -27,11 +28,10 @@ const EditForm = () => {
     e.preventDefault();
 
     try {
-        await axios.put(`http://localhost:9000/jobs/${id}`, newInput);
-        toast.success('added to favourite')
+      await axios.put(`http://localhost:9000/jobs/${id}`, newInput);
+      toast.success("added to favourite");
     } catch (error) {
-        toast.error('dont save to favourite')
-    
+      toast.error("dont save to favourite");
     }
 
     setNewInput({
@@ -43,11 +43,15 @@ const EditForm = () => {
       description: "",
     });
   };
- 
+
   return (
-    <div style={{ background: "#91C8E4" }} className="jobform">
-      <h2>
-        Edit Application Form <span onClick={() => setIsEdit(false)}>❌</span>
+    <div   className="jobform">
+      <h2 className="formheading">
+        Edit Application Form{" "}
+        <RiDeleteBack2Line
+          className="deleticon"
+          onClick={() => setIsEdit(false)}
+        />
       </h2>
       <form onSubmit={handleSubmit}>
         <label>
